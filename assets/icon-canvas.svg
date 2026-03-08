@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title>Canvas icon</title>
+  <rect width="96" height="96" rx="28" fill="#ffd9cc"/>
+  <circle cx="24" cy="26" r="8" fill="#2c2018"/>
+  <circle cx="70" cy="26" r="8" fill="#2c2018"/>
+  <circle cx="48" cy="68" r="8" fill="#2c2018"/>
+  <path d="M30 26h32M28 32l16 26M68 32 52 58" stroke="#2c2018" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

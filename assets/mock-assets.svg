@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title">
+  <title>Assets placeholder</title>
+  <rect width="640" height="400" rx="30" fill="#f2f9ef"/>
+  <rect x="56" y="56" width="240" height="132" rx="24" fill="#ffd9cc" stroke="#ddc7b4" stroke-width="2"/>
+  <rect x="344" y="56" width="240" height="132" rx="24" fill="#cfe4ff" stroke="#ddc7b4" stroke-width="2"/>
+  <rect x="56" y="212" width="240" height="132" rx="24" fill="#fff5c6" stroke="#ddc7b4" stroke-width="2"/>
+  <rect x="344" y="212" width="240" height="132" rx="24" fill="#fffdf8" stroke="#ddc7b4" stroke-width="2"/>
+  <circle cx="176" cy="114" r="30" fill="#fffdf8" opacity=".66"/>
+  <circle cx="464" cy="286" r="34" fill="#ffd9cc" opacity=".55"/>
+</svg>

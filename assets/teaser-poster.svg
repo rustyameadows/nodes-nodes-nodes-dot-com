@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Nodes Nodes Nodes teaser poster</title>
+  <desc id="desc">Friendly placeholder teaser image for the marketing site.</desc>
+  <rect width="1280" height="720" fill="#fff7ee"/>
+  <circle cx="1116" cy="126" r="120" fill="#ffd9cc"/>
+  <circle cx="188" cy="614" r="108" fill="#cfe4ff"/>
+  <rect x="64" y="64" width="1152" height="592" rx="42" fill="#fffdf8" stroke="#ddc7b4" stroke-width="3"/>
+  <text x="118" y="140" fill="#6e6055" font-family="'IBM Plex Mono', monospace" font-size="26" letter-spacing="5">NODES NODES NODES</text>
+  <text x="116" y="274" fill="#2c2018" font-family="'Syne', sans-serif" font-size="104" font-weight="800" letter-spacing="-4">messy ideas,</text>
+  <text x="116" y="366" fill="#2c2018" font-family="'Syne', sans-serif" font-size="104" font-weight="800" letter-spacing="-4">kept in one</text>
+  <text x="116" y="458" fill="#2c2018" font-family="'Syne', sans-serif" font-size="104" font-weight="800" letter-spacing="-4">friendlier place</text>
+  <rect x="124" y="510" width="268" height="82" rx="30" fill="#ffd9cc" stroke="#ddc7b4" stroke-width="2"/>
+  <rect x="418" y="510" width="268" height="82" rx="30" fill="#cfe4ff" stroke="#ddc7b4" stroke-width="2"/>
+  <rect x="712" y="510" width="268" height="82" rx="30" fill="#fff5c6" stroke="#ddc7b4" stroke-width="2"/>
+  <text x="166" y="560" fill="#6e6055" font-family="'IBM Plex Mono', monospace" font-size="22" letter-spacing="3">CANVAS</text>
+  <text x="470" y="560" fill="#6e6055" font-family="'IBM Plex Mono', monospace" font-size="22" letter-spacing="3">RUNS</text>
+  <text x="770" y="560" fill="#6e6055" font-family="'IBM Plex Mono', monospace" font-size="22" letter-spacing="3">COMPARE</text>
+</svg>

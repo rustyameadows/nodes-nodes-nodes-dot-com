@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title">
+  <title>Canvas placeholder</title>
+  <rect width="640" height="400" rx="30" fill="#eef6ff"/>
+  <path d="M180 118h136M316 118l92 56M198 248l90-106M408 174l92 82" stroke="#2c2018" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <rect x="88" y="92" width="132" height="58" rx="22" fill="#fffdf8" stroke="#ddc7b4" stroke-width="2"/>
+  <rect x="242" y="88" width="126" height="62" rx="22" fill="#ffd9cc" stroke="#ddc7b4" stroke-width="2"/>
+  <rect x="164" y="216" width="132" height="70" rx="22" fill="#fff5c6" stroke="#ddc7b4" stroke-width="2"/>
+  <rect x="394" y="148" width="116" height="64" rx="22" fill="#ecf7e9" stroke="#ddc7b4" stroke-width="2"/>
+  <rect x="468" y="258" width="118" height="74" rx="22" fill="#fffdf8" stroke="#ddc7b4" stroke-width="2"/>
+  <text x="100" y="124" fill="#6e6055" font-family="'IBM Plex Mono', monospace" font-size="16">PROMPT</text>
+  <text x="258" y="122" fill="#6e6055" font-family="'IBM Plex Mono', monospace" font-size="16">MODEL</text>
+  <text x="178" y="254" fill="#6e6055" font-family="'IBM Plex Mono', monospace" font-size="16">LIST</text>
+</svg>
