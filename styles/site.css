@@ -85,17 +85,19 @@ details > summary::-webkit-details-marker {
 .skip-link {
   position: absolute;
   left: 16px;
-  top: -48px;
+  top: 16px;
   z-index: 100;
   padding: 12px 16px;
   border: 2px solid var(--text);
   border-radius: 999px;
   background: #fff;
   color: var(--text);
+  transform: translateY(-220%);
+  transition: transform 140ms ease;
 }
 
 .skip-link:focus {
-  top: 16px;
+  transform: translateY(0);
 }
 
 .site-shell {
@@ -117,15 +119,15 @@ details > summary::-webkit-details-marker {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 20px 0;
+  gap: 20px;
+  padding: 18px 0;
   backdrop-filter: blur(18px);
 }
 
 .site-header::before {
   content: "";
   position: absolute;
-  inset: 0 -24px;
+  inset: 0 -8px;
   z-index: -1;
   background: rgba(255, 247, 238, 0.84);
   border-bottom: 1px solid rgba(221, 199, 180, 0.8);
@@ -161,6 +163,7 @@ details > summary::-webkit-details-marker {
 .wordmark-subtitle {
   color: var(--muted);
   font-size: 1rem;
+  max-width: 28ch;
 }
 
 .site-nav {
@@ -244,12 +247,12 @@ details > summary::-webkit-details-marker {
 .section-title,
 .display-title {
   margin: 0;
-  line-height: 0.94;
+  line-height: 0.98;
 }
 
 .page-title {
-  max-width: 11ch;
-  font-size: clamp(3.2rem, 10vw, 7rem);
+  max-width: 9.5ch;
+  font-size: clamp(2.8rem, 7.6vw, 5.8rem);
 }
 
 .display-title {
@@ -274,12 +277,14 @@ details > summary::-webkit-details-marker {
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 28px;
+  align-items: center;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  align-self: flex-start;
   min-height: 50px;
   padding: 0 20px;
   border: 2px solid #d8baa0;
@@ -385,6 +390,11 @@ details > summary::-webkit-details-marker {
   border-radius: 28px;
   background: #fffdf8;
   box-shadow: var(--shadow);
+}
+
+.hero-art {
+  max-width: 540px;
+  justify-self: end;
 }
 
 .sticker-row,
@@ -730,8 +740,18 @@ details > summary::-webkit-details-marker {
     flex-direction: column;
   }
 
+  .site-nav {
+    width: 100%;
+    gap: 14px;
+  }
+
   .page-title {
     max-width: 100%;
+  }
+
+  .hero-art {
+    max-width: 100%;
+    justify-self: stretch;
   }
 
   .hero-panel dl {
@@ -749,7 +769,11 @@ details > summary::-webkit-details-marker {
 
 @media (max-width: 640px) {
   .site-header::before {
-    inset: 0 -16px;
+    inset: 0 -4px;
+  }
+
+  .wordmark-subtitle {
+    font-size: 0.95rem;
   }
 
   .hero-actions,
@@ -759,5 +783,26 @@ details > summary::-webkit-details-marker {
 
   .button {
     width: 100%;
+  }
+
+  .site-nav {
+    gap: 10px 14px;
+  }
+
+  .site-nav a {
+    font-size: 0.8rem;
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 13vw, 4.2rem);
+    line-height: 1;
+  }
+
+  .display-title {
+    font-size: clamp(2.15rem, 10.5vw, 3.3rem);
+  }
+
+  .page-hero {
+    padding-top: 36px;
   }
 }
