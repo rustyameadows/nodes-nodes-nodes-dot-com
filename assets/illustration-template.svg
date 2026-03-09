@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Nodes Nodes Nodes illustration template</title>
+  <desc id="desc">Reusable template for editorial site illustrations with safe areas and palette guidance.</desc>
+  <rect width="1600" height="1000" rx="48" fill="#fbf7ef"/>
+  <circle cx="1440" cy="140" r="120" fill="#ffdccb" opacity=".8"/>
+  <circle cx="150" cy="860" r="120" fill="#dbf6ff" opacity=".85"/>
+  <rect x="90" y="90" width="1420" height="820" rx="40" fill="#fffef9" stroke="rgba(23,32,39,0.14)" stroke-width="4"/>
+  <rect x="170" y="170" width="1260" height="660" rx="34" fill="#101417"/>
+  <rect x="230" y="230" width="1140" height="540" rx="24" fill="none" stroke="rgba(255,255,255,0.18)" stroke-dasharray="14 12" stroke-width="3"/>
+  <text x="240" y="152" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="28" letter-spacing="4">SAFE AREA</text>
+  <text x="240" y="290" fill="rgba(255,255,255,0.65)" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700">Place primary editorial content here.</text>
+  <text x="240" y="350" fill="rgba(255,255,255,0.4)" font-family="Arial, Helvetica, sans-serif" font-size="32">Keep text large, sparse, and clear at thumbnail size.</text>
+  <rect x="240" y="670" width="250" height="64" rx="22" fill="#fff3ed" stroke="#ff9d7d" stroke-width="3"/>
+  <rect x="518" y="670" width="250" height="64" rx="22" fill="#eefbff" stroke="#8ce7ff" stroke-width="3"/>
+  <rect x="796" y="670" width="250" height="64" rx="22" fill="#f8f5de" stroke="#d8ff3e" stroke-width="3"/>
+  <text x="278" y="710" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="3">CORAL</text>
+  <text x="562" y="710" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="3">AQUA</text>
+  <text x="844" y="710" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="3">CITRUS</text>
+</svg>

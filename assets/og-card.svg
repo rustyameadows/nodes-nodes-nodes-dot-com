@@ -1,34 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Nodes Nodes Nodes social card</title>
-  <desc id="desc">Social preview image for Nodes Nodes Nodes with local-first workflow messaging and a dark canvas mockup.</desc>
+  <desc id="desc">Social preview image for Nodes Nodes Nodes with screenshot-led product proof and local-first workflow messaging.</desc>
+  <defs>
+    <clipPath id="shotClip">
+      <rect x="648" y="82" width="486" height="364" rx="28"/>
+    </clipPath>
+  </defs>
   <rect width="1200" height="630" fill="#fbf7ef"/>
-  <circle cx="1038" cy="108" r="108" fill="#ffdccb"/>
-  <circle cx="124" cy="538" r="96" fill="#dbf6ff"/>
-  <rect x="40" y="40" width="1120" height="550" rx="34" fill="#fffef9" stroke="rgba(23,32,39,0.14)" stroke-width="2"/>
-  <text x="92" y="124" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="4">LOCAL-FIRST MAC APP</text>
-  <text x="92" y="222" fill="#101417" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700">Build, run, inspect,</text>
-  <text x="92" y="300" fill="#101417" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700">review.</text>
-  <text x="96" y="356" fill="#24303b" font-family="Arial, Helvetica, sans-serif" font-size="26">Infinite-canvas workflows for text, data, images, video, files,</text>
-  <text x="96" y="390" fill="#24303b" font-family="Arial, Helvetica, sans-serif" font-size="26">local tools, provider keys, and debuggable runs.</text>
-  <rect x="730" y="110" width="352" height="330" rx="28" fill="#101417"/>
-  <g opacity=".15" stroke="#8ce7ff" stroke-width="1">
-    <path d="M760 148h292"/>
-    <path d="M760 194h292"/>
-    <path d="M760 240h292"/>
-    <path d="M760 286h292"/>
-    <path d="M760 332h292"/>
-    <path d="M760 378h292"/>
-  </g>
-  <rect x="780" y="166" width="146" height="62" rx="18" fill="#fffef9" stroke="#ff9d7d" stroke-width="3"/>
-  <rect x="958" y="152" width="88" height="58" rx="18" fill="#f4ecdd" stroke="#d8ff3e" stroke-width="3"/>
-  <rect x="856" y="282" width="128" height="72" rx="18" fill="#fffef9" stroke="#8ce7ff" stroke-width="3"/>
-  <rect x="1000" y="286" width="56" height="104" rx="18" fill="#f4ecdd" stroke="#ffd26c" stroke-width="3"/>
-  <path d="M926 198h30M972 182l40 22M914 284l-26-56" stroke="#fffef9" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-  <path d="M922 198c54 6 86 18 112 42" stroke="#ff4fc6" stroke-width="4" stroke-linecap="round" fill="none"/>
-  <path d="M980 320c24 8 44 24 56 44" stroke="#d8ff3e" stroke-width="4" stroke-linecap="round" fill="none"/>
-  <rect x="92" y="454" width="228" height="66" rx="24" fill="#fff3ed" stroke="#ff9d7d" stroke-width="2"/>
-  <rect x="338" y="454" width="228" height="66" rx="24" fill="#eefbff" stroke="#8ce7ff" stroke-width="2"/>
-  <text x="142" y="495" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="19" letter-spacing="3">BYO KEYS</text>
-  <text x="374" y="495" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="19" letter-spacing="3">QUEUE + DEBUG</text>
-  <text x="92" y="566" fill="#101417" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">Nodes Nodes Nodes</text>
+  <circle cx="1062" cy="110" r="110" fill="#ffdccb"/>
+  <circle cx="110" cy="542" r="90" fill="#dbf6ff"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="#fffef9" stroke="rgba(23,32,39,0.14)" stroke-width="2"/>
+  <text x="94" y="124" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="4">LOCAL-FIRST MAC APP</text>
+  <text x="94" y="214" fill="#101417" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="700">Build, run, inspect,</text>
+  <text x="94" y="290" fill="#101417" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="700">and review in one</text>
+  <text x="94" y="366" fill="#101417" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="700">place.</text>
+  <text x="96" y="420" fill="#24303b" font-family="Arial, Helvetica, sans-serif" font-size="26">Text, data, images, video, files, local tools,</text>
+  <text x="96" y="454" fill="#24303b" font-family="Arial, Helvetica, sans-serif" font-size="26">provider keys, and queue-aware workflow review.</text>
+  <rect x="630" y="64" width="522" height="400" rx="32" fill="rgba(255,254,249,0.72)" stroke="rgba(23,32,39,0.1)" stroke-width="2"/>
+  <image href="hero-beauty.png" x="648" y="82" width="486" height="364" preserveAspectRatio="xMidYMid slice" clip-path="url(#shotClip)"/>
+  <rect x="92" y="500" width="218" height="60" rx="22" fill="#fff3ed" stroke="#ff9d7d" stroke-width="2"/>
+  <rect x="330" y="500" width="240" height="60" rx="22" fill="#eefbff" stroke="#8ce7ff" stroke-width="2"/>
+  <text x="132" y="538" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="18" letter-spacing="3">BYO KEYS</text>
+  <text x="360" y="538" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="18" letter-spacing="3">QUEUE + REVIEW</text>
+  <text x="94" y="585" fill="#101417" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">Nodes Nodes Nodes</text>
 </svg>

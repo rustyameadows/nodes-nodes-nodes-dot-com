@@ -1,34 +1,69 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-  <title id="title">Nodes Nodes Nodes teaser poster</title>
-  <desc id="desc">Warm light poster with a dark workflow canvas and product messaging for Nodes Nodes Nodes.</desc>
+  <title id="title">Nodes Nodes Nodes teaser illustration</title>
+  <desc id="desc">Warm app illustration for the Nodes Nodes Nodes early macOS alpha, showing a simplified workflow window and queue-review flow.</desc>
   <rect width="1280" height="720" fill="#fbf7ef"/>
-  <circle cx="1124" cy="132" r="116" fill="#ffdccb"/>
-  <circle cx="176" cy="602" r="112" fill="#dbf6ff"/>
-  <rect x="58" y="58" width="1164" height="604" rx="40" fill="#fffef9" stroke="rgba(23,32,39,0.14)" stroke-width="3"/>
-  <text x="120" y="132" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="24" letter-spacing="4">NODES NODES NODES</text>
-  <text x="116" y="250" fill="#101417" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="700">build, run, inspect,</text>
-  <text x="116" y="344" fill="#101417" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="700">review.</text>
-  <text x="120" y="402" fill="#24303b" font-family="Arial, Helvetica, sans-serif" font-size="30">Local-first Mac app for text, data, images, video, files,</text>
-  <text x="120" y="438" fill="#24303b" font-family="Arial, Helvetica, sans-serif" font-size="30">provider runs, local tools, and debuggable workflow loops.</text>
-  <rect x="734" y="118" width="414" height="432" rx="30" fill="#101417"/>
-  <g opacity=".15" stroke="#8ce7ff" stroke-width="1">
-    <path d="M768 160h346"/>
-    <path d="M768 206h346"/>
-    <path d="M768 252h346"/>
-    <path d="M768 298h346"/>
-    <path d="M768 344h346"/>
-    <path d="M768 390h346"/>
-    <path d="M768 436h346"/>
+  <circle cx="1106" cy="126" r="108" fill="#ffdccb" opacity=".82"/>
+  <circle cx="164" cy="608" r="104" fill="#dbf6ff" opacity=".88"/>
+  <rect x="36" y="52" width="1208" height="616" rx="48" fill="#101417" stroke="rgba(23,32,39,0.1)" stroke-width="2"/>
+  <rect x="36" y="52" width="1208" height="60" rx="48" fill="#171c20"/>
+  <circle cx="76" cy="82" r="8" fill="#ff9d7d"/>
+  <circle cx="100" cy="82" r="8" fill="#ffd26c"/>
+  <circle cx="124" cy="82" r="8" fill="#5ec78d"/>
+  <text x="520" y="88" fill="rgba(255,255,255,0.55)" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Nodes Nodes Nodes</text>
+
+  <g opacity=".12" stroke="#8ce7ff" stroke-width="1">
+    <path d="M96 170h1088"/>
+    <path d="M96 246h1088"/>
+    <path d="M96 322h1088"/>
+    <path d="M96 398h1088"/>
+    <path d="M96 474h1088"/>
+    <path d="M96 550h1088"/>
   </g>
-  <rect x="788" y="174" width="172" height="74" rx="22" fill="#fffef9" stroke="#ff9d7d" stroke-width="3"/>
-  <rect x="992" y="156" width="116" height="72" rx="22" fill="#f4ecdd" stroke="#d8ff3e" stroke-width="3"/>
-  <rect x="864" y="318" width="148" height="86" rx="22" fill="#fffef9" stroke="#8ce7ff" stroke-width="3"/>
-  <rect x="1040" y="330" width="72" height="130" rx="22" fill="#f4ecdd" stroke="#ffd26c" stroke-width="3"/>
-  <path d="M960 212h32M1048 190l36 18M922 318l-26-70" stroke="#fffef9" stroke-width="5" stroke-linecap="round" fill="none"/>
-  <path d="M960 214c52 8 82 20 116 44" stroke="#ff4fc6" stroke-width="4" stroke-linecap="round" fill="none"/>
-  <path d="M980 352c38 10 68 28 86 54" stroke="#d8ff3e" stroke-width="4" stroke-linecap="round" fill="none"/>
-  <rect x="118" y="516" width="244" height="66" rx="24" fill="#fff3ed" stroke="#ff9d7d" stroke-width="2"/>
-  <rect x="382" y="516" width="244" height="66" rx="24" fill="#eefbff" stroke="#8ce7ff" stroke-width="2"/>
-  <text x="160" y="556" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="3">BYO KEYS</text>
-  <text x="420" y="556" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="3">QUEUE + DEBUG</text>
+
+  <rect x="168" y="208" width="312" height="166" rx="30" fill="#fffef9" stroke="#ff9d7d" stroke-width="3"/>
+  <text x="206" y="256" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="2">PROJECT</text>
+  <rect x="206" y="292" width="134" height="16" rx="8" fill="#24303b" opacity=".12"/>
+  <rect x="206" y="320" width="196" height="16" rx="8" fill="#24303b" opacity=".12"/>
+  <rect x="206" y="348" width="150" height="12" rx="6" fill="#8ce7ff" opacity=".82"/>
+  <circle cx="426" cy="348" r="10" fill="#ff9d7d"/>
+
+  <rect x="520" y="198" width="202" height="120" rx="24" fill="#f4ecdd" stroke="#d8ff3e" stroke-width="3"/>
+  <text x="554" y="242" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="18" letter-spacing="2">LIST</text>
+  <rect x="554" y="274" width="110" height="12" rx="6" fill="#24303b" opacity=".14"/>
+  <rect x="554" y="296" width="86" height="12" rx="6" fill="#24303b" opacity=".14"/>
+  <rect x="652" y="296" width="28" height="12" rx="6" fill="#ff4fc6" opacity=".72"/>
+
+  <rect x="760" y="186" width="222" height="124" rx="26" fill="#f8f5de" stroke="#d8ff3e" stroke-width="3"/>
+  <text x="798" y="232" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="2">CANVAS</text>
+  <circle cx="826" cy="262" r="13" fill="#ff9d7d"/>
+  <circle cx="886" cy="236" r="13" fill="#8ce7ff"/>
+  <circle cx="936" cy="272" r="13" fill="#ffd26c"/>
+  <path d="M844 262h30M900 244l22 18" stroke="#101417" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+  <rect x="1014" y="244" width="118" height="112" rx="24" fill="#fffef9" stroke="#8ce7ff" stroke-width="3"/>
+  <text x="1036" y="286" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="15" letter-spacing="2">OUTPUT</text>
+  <rect x="1048" y="314" width="46" height="8" rx="4" fill="#24303b" opacity=".18"/>
+
+  <rect x="206" y="430" width="212" height="122" rx="24" fill="#eefbff" stroke="#8ce7ff" stroke-width="3"/>
+  <text x="242" y="470" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="18" letter-spacing="2">TOOLS</text>
+  <rect x="242" y="498" width="100" height="14" rx="7" fill="#8ce7ff"/>
+  <rect x="242" y="524" width="128" height="10" rx="5" fill="#24303b" opacity=".18"/>
+
+  <rect x="470" y="424" width="272" height="140" rx="28" fill="#eefbff" stroke="#8ce7ff" stroke-width="3"/>
+  <text x="508" y="468" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="2">QUEUE</text>
+  <rect x="508" y="496" width="142" height="16" rx="8" fill="#8ce7ff"/>
+  <rect x="508" y="526" width="190" height="12" rx="6" fill="#24303b" opacity=".18"/>
+  <rect x="508" y="550" width="114" height="12" rx="6" fill="#d8ff3e" opacity=".76"/>
+
+  <rect x="798" y="390" width="196" height="198" rx="30" fill="#fff3ed" stroke="#ff9d7d" stroke-width="3"/>
+  <text x="838" y="436" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="20" letter-spacing="2">REVIEW</text>
+  <rect x="840" y="484" width="44" height="98" rx="16" fill="#ff9d7d" opacity=".62"/>
+  <rect x="898" y="484" width="44" height="98" rx="16" fill="#fffef9"/>
+
+  <path d="M480 290c20 0 28 -8 40 -22" stroke="#ff4fc6" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M722 274c14 0 24 -4 38 -12" stroke="#ff4fc6" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M982 260c14 8 22 18 32 30" stroke="#d8ff3e" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M418 494c20 6 34 6 52 0" stroke="#8ce7ff" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 8" fill="none"/>
+  <path d="M742 494c20 -8 38 -8 56 -4" stroke="#8ce7ff" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 8" fill="none"/>
+  <path d="M622 568c58 -4 118 -28 176 -74" stroke="#d8ff3e" stroke-width="5" stroke-linecap="round" fill="none"/>
 </svg>

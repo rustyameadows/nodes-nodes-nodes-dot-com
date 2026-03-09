@@ -32,21 +32,36 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at 12% 10%, rgba(255, 157, 125, 0.17), transparent 28%),
-    radial-gradient(circle at 85% 8%, rgba(140, 231, 255, 0.2), transparent 28%),
-    radial-gradient(circle at 30% 84%, rgba(216, 255, 62, 0.18), transparent 26%),
-    radial-gradient(circle at 76% 76%, rgba(255, 210, 108, 0.12), transparent 24%),
-    linear-gradient(180deg, #fffef9 0%, #fbf7ef 100%);
+  position: relative;
+  background: linear-gradient(180deg, #fffef9 0%, #fbf7ef 100%);
   color: var(--text);
   font-family: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  clip-path: inset(56px 0 0 0);
+  background:
+    radial-gradient(circle at 16% 28%, rgba(255, 157, 125, 0.11), transparent 22%),
+    radial-gradient(circle at 84% 24%, rgba(140, 231, 255, 0.14), transparent 20%),
+    radial-gradient(circle at 18% 78%, rgba(216, 255, 62, 0.1), transparent 18%),
+    radial-gradient(circle at 82% 82%, rgba(255, 210, 108, 0.08), transparent 16%);
 }
 
 img,
 svg {
   display: block;
   max-width: 100%;
+}
+
+figure {
+  margin: 0;
 }
 
 a {
@@ -116,30 +131,23 @@ details > summary::-webkit-details-marker {
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position: static;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 18px 0;
-  backdrop-filter: blur(18px);
+  gap: 28px;
+  padding: clamp(14px, 2.2vw, 22px) 0 2px;
 }
 
 .site-header::before {
-  content: "";
-  position: absolute;
-  inset: 0 -8px;
-  z-index: -1;
-  background: rgba(255, 254, 249, 0.88);
-  border-bottom: 1px solid rgba(23, 32, 39, 0.1);
+  display: none;
 }
 
 .wordmark {
   display: inline-flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
 }
 
 .wordmark-title,
@@ -172,13 +180,14 @@ details > summary::-webkit-details-marker {
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 20px;
+  align-items: center;
 }
 
 .site-nav a {
   color: var(--muted);
-  font-size: 0.86rem;
-  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -192,7 +201,7 @@ details > summary::-webkit-details-marker {
 }
 
 .page-hero {
-  padding: clamp(48px, 10vw, 120px) 0 clamp(36px, 6vw, 64px);
+  padding: clamp(2px, 1vw, 10px) 0 clamp(32px, 5vw, 64px);
 }
 
 .hero-grid,
@@ -207,8 +216,11 @@ details > summary::-webkit-details-marker {
 }
 
 .hero-grid {
-  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
-  align-items: end;
+  grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
+  grid-template-areas: "copy visual";
+  align-items: center;
+  column-gap: clamp(24px, 4vw, 52px);
+  row-gap: 18px;
 }
 
 .hero-visual,
@@ -216,6 +228,19 @@ details > summary::-webkit-details-marker {
 .split-visual {
   display: grid;
   gap: 14px;
+}
+
+.hero-copy {
+  grid-area: copy;
+  max-width: 41rem;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.hero-visual {
+  grid-area: visual;
+  align-self: start;
 }
 
 .eyebrow,
@@ -254,9 +279,9 @@ details > summary::-webkit-details-marker {
 }
 
 .page-title {
-  max-width: 11.5ch;
-  font-size: clamp(2.8rem, 7vw, 5.2rem);
-  line-height: 1;
+  max-width: 10.4ch;
+  font-size: clamp(2.6rem, 5.2vw, 4.45rem);
+  line-height: 0.96;
 }
 
 .display-title {
@@ -275,12 +300,27 @@ details > summary::-webkit-details-marker {
   color: var(--text-soft);
 }
 
+.page-hero .lede {
+  max-width: 33rem;
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.42;
+}
+
+.hero-kicker {
+  max-width: 30ch;
+  margin: 0;
+  color: var(--text);
+  font-family: "Syne", "Trebuchet MS", sans-serif;
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.12;
+}
+
 .hero-actions,
 .button-row {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 28px;
+  margin-top: 10px;
   align-items: center;
 }
 
@@ -328,9 +368,35 @@ details > summary::-webkit-details-marker {
 .hero-note,
 .status-note,
 .fine-print {
-  margin-top: 16px;
+  margin-top: 10px;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.hero-proof-list,
+.hero-aside-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.hero-proof-list li,
+.hero-aside-list li {
+  padding: 9px 14px 10px;
+  border: 1px solid rgba(23, 32, 39, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 254, 249, 0.7);
+  color: var(--text-soft);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-proof-list li::before,
+.hero-aside-list li::before {
+  display: none;
 }
 
 .hero-panel,
@@ -400,6 +466,63 @@ details > summary::-webkit-details-marker {
 .hero-art {
   max-width: 540px;
   justify-self: end;
+}
+
+.shot-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.shot-card,
+.hero-aside-card {
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: rgba(255, 254, 249, 0.84);
+  box-shadow: 0 28px 68px rgba(16, 20, 23, 0.14);
+}
+
+.shot-card {
+  padding: 14px;
+  overflow: hidden;
+}
+
+.hero-shot {
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 20px 54px rgba(16, 20, 23, 0.18);
+}
+
+.hero-shot-card {
+  width: min(100%, 660px);
+  justify-self: end;
+}
+
+.hero-visual-list {
+  width: min(100%, 660px);
+  justify-self: end;
+  justify-content: flex-start;
+}
+
+.hero-aside-card {
+  width: min(100%, 460px);
+  justify-self: end;
+  padding: 20px 22px;
+}
+
+.hero-aside-card h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Syne", "Trebuchet MS", sans-serif;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.hero-aside-copy {
+  margin: 12px 0 0;
+  color: var(--text-soft);
+  font-size: 1rem;
+  max-width: 34ch;
 }
 
 .sticker-row,
@@ -696,7 +819,7 @@ details > summary::-webkit-details-marker {
 }
 
 .route-hero {
-  padding-top: clamp(36px, 8vw, 72px);
+  padding-top: clamp(10px, 2vw, 18px);
 }
 
 .route-grid {
@@ -740,6 +863,12 @@ details > summary::-webkit-details-marker {
     grid-template-columns: 1fr;
   }
 
+  .hero-grid {
+    grid-template-areas:
+      "copy"
+      "visual";
+  }
+
   .site-header {
     align-items: flex-start;
     flex-direction: column;
@@ -759,6 +888,12 @@ details > summary::-webkit-details-marker {
     justify-self: stretch;
   }
 
+  .hero-shot-card,
+  .hero-aside-card {
+    width: 100%;
+    justify-self: stretch;
+  }
+
   .hero-panel dl {
     grid-template-columns: 1fr;
   }
@@ -773,10 +908,6 @@ details > summary::-webkit-details-marker {
 }
 
 @media (max-width: 640px) {
-  .site-header::before {
-    inset: 0 -4px;
-  }
-
   .wordmark-subtitle {
     font-size: 0.95rem;
   }
@@ -799,7 +930,7 @@ details > summary::-webkit-details-marker {
   }
 
   .page-title {
-    font-size: clamp(2.5rem, 13vw, 4.2rem);
+    font-size: clamp(2.65rem, 12vw, 4.1rem);
     line-height: 1;
   }
 
@@ -808,6 +939,14 @@ details > summary::-webkit-details-marker {
   }
 
   .page-hero {
-    padding-top: 36px;
+    padding-top: 18px;
+  }
+
+  .hero-kicker {
+    max-width: none;
+  }
+
+  .hero-proof-list {
+    gap: 8px;
   }
 }

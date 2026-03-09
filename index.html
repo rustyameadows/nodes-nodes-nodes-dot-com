@@ -50,7 +50,6 @@
       <header class="site-header">
         <a class="wordmark" href="/" aria-label="Nodes Nodes Nodes home">
           <span class="wordmark-title">Nodes Nodes Nodes</span>
-          <span class="wordmark-subtitle">Mac desktop app for local AI workflows.</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
           <a href="/product/">Product</a>
@@ -63,44 +62,45 @@
       <main id="main">
         <section class="page-hero">
           <div class="hero-grid">
-            <div>
-              <p class="eyebrow">Mac desktop app for local AI workflows</p>
-              <h1 class="page-title">You aren't going to chat your way through a creative exploration.</h1>
+            <div class="hero-copy">
+              <p class="eyebrow">Local-first Mac app for multimodal AI workflows</p>
+              <h1 class="page-title">Build, run, inspect, and review in one place.</h1>
               <p class="lede">
-                Nodes Nodes Nodes is a local-first Mac app for text, data, images, video, files, and more. Build
-                workflows on an infinite canvas, bring your own provider keys, wire in local tools, and debug every
-                step without losing the thread.
+                Nodes Nodes Nodes is a local-first Mac app for text, data, images, video, files, and local tools.
+                Build workflows on an infinite canvas, bring your own provider keys, and inspect queue state plus
+                provider responses without leaving the project.
               </p>
               <div class="hero-actions">
                 <a class="button" href="#alpha-access">Join the waitlist</a>
                 <a class="button secondary" href="/download/">Download the alpha</a>
               </div>
-              <p class="hero-note">Very early macOS alpha. Local files. Bring your own provider keys.</p>
+              <p class="hero-note">Very early macOS alpha for Apple Silicon. Bring your own provider keys.</p>
             </div>
-            <aside class="hero-visual" aria-label="Hero collage">
-              <img
-                class="hero-art"
-                src="/assets/hero-collage.svg"
-                alt="Illustrated product collage showing a dark workflow canvas, local notes, queue state, and review panels."
-              />
-              <div class="sticker-row">
-                <span class="placeholder-label">local files</span>
-                <span class="placeholder-label">bring your own provider keys</span>
-                <span class="placeholder-label">text + data + images + video + files</span>
-                <span class="placeholder-label">local tools in the workflow</span>
-                <span class="placeholder-label">debuggable runs</span>
-              </div>
+            <aside class="hero-visual" aria-label="Product proof">
+              <figure class="shot-card hero-shot-card">
+                <img
+                  class="hero-shot"
+                  src="/assets/hero-beauty.png"
+                  alt="Nodes Nodes Nodes app window showing an infinite canvas workflow on a pink background."
+                />
+              </figure>
+              <ul class="hero-proof-list hero-visual-list" aria-label="Key capabilities">
+                <li>Local files</li>
+                <li>Bring your own keys</li>
+                <li>Multimodal workflows</li>
+                <li>Queue + debug visibility</li>
+              </ul>
             </aside>
           </div>
         </section>
 
         <section class="page-section">
           <div class="section-head">
-            <p class="section-label">Why it exists</p>
-            <h2 class="section-title">Workflow software, not a bigger chat box.</h2>
+            <p class="section-label">What it does</p>
+            <h2 class="section-title">One product for the actual loop.</h2>
             <p class="section-copy">
-              Creative work spills across prompts, datasets, files, provider tabs, scripts, and review folders. Nodes
-              Nodes Nodes tries to keep that orchestration visible in one local workspace.
+              Most AI tools stop at generation. Nodes Nodes Nodes keeps setup, execution, inspection, and review inside
+              one local workspace so the project stays legible from first prompt to final output.
             </p>
           </div>
           <div class="four-column">
@@ -131,7 +131,7 @@
           <div class="two-column">
             <div>
               <div class="section-head">
-                <p class="section-label">Tiny walkthrough</p>
+                <p class="section-label">Workflow loop</p>
                 <h2 class="section-title">Build, run, inspect, iterate.</h2>
               </div>
               <ol class="number-list">
@@ -159,18 +159,9 @@
               </ol>
             </div>
             <article class="media-card">
-              <p class="section-label">Placeholder teaser</p>
-              <video
-                controls
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                poster="/assets/teaser-poster.svg"
-              >
-                <source src="/assets/teaser.mp4" type="video/mp4" />
-              </video>
-              <p class="fine-print">Placeholder motion for now. The real walkthrough should show queue state, debug detail, and review loops.</p>
+              <p class="section-label">Workflow map</p>
+              <img src="/assets/hero-collage.svg" alt="Editorial collage showing notes, queue state, and review surfaces around a dark workflow canvas." />
+              <p class="fine-print">Illustrated workflow view of local notes, queue visibility, and review surfaces around the canvas.</p>
             </article>
           </div>
         </section>
@@ -186,19 +177,19 @@
           </div>
           <div class="frame-grid">
             <article class="frame">
-              <img src="/assets/mock-home.svg" alt="Placeholder app home screen." />
+              <img src="/assets/mock-home.svg" alt="Illustrated app home concept for Nodes Nodes Nodes." />
               <span class="placeholder-label">APP HOME</span>
             </article>
             <article class="frame">
-              <img src="/assets/mock-canvas.svg" alt="Placeholder canvas screen." />
+              <img src="/assets/mock-canvas.svg" alt="Illustrated canvas concept for Nodes Nodes Nodes." />
               <span class="placeholder-label">CANVAS</span>
             </article>
             <article class="frame">
-              <img src="/assets/mock-queue.svg" alt="Placeholder queue screen." />
+              <img src="/assets/mock-queue.svg" alt="Illustrated queue concept for Nodes Nodes Nodes." />
               <span class="placeholder-label">QUEUE</span>
             </article>
             <article class="frame">
-              <img src="/assets/mock-assets.svg" alt="Placeholder assets screen." />
+              <img src="/assets/mock-assets.svg" alt="Illustrated assets concept for Nodes Nodes Nodes." />
               <span class="placeholder-label">ASSETS</span>
             </article>
           </div>
@@ -207,23 +198,22 @@
         <section class="page-section" id="alpha-access">
           <div class="section-head">
             <p class="section-label">Alpha access</p>
-            <h2 class="section-title">Very early alpha, living on GitHub for now.</h2>
+            <h2 class="section-title">Very early macOS alpha.</h2>
             <p class="section-copy">
-              The current repo is the honest source of truth for early access. The waitlist is still a placeholder, but
-              the GitHub repo can point curious Mac users to the current alpha reality.
+              The GitHub repo is the current source of truth for build access, install notes, and source-run
+              instructions.
             </p>
           </div>
           <div class="cta-band">
             <article class="cta-card">
               <p class="badge">Join the waitlist</p>
-              <h3>Waitlist slot goes here</h3>
-              <p>No provider is wired up yet, so this stays honest for now.</p>
-              <p class="fine-print">When it exists, this should feel easy, quiet, and not like signing up for a fintech.</p>
+              <h3>Waitlist signup</h3>
+              <p>The signup flow is not live yet. Until it is, the GitHub repo is the current path to the alpha.</p>
             </article>
             <article class="cta-card">
               <p class="badge">Download the alpha</p>
-              <h3>The repo is the current handoff point</h3>
-              <p>Very early macOS alpha. Expect an unsigned Apple Silicon build, rough edges, and occasional source-run notes.</p>
+              <h3>GitHub is the current download path</h3>
+              <p>Use the GitHub repo for the current Apple Silicon alpha, install notes, and source-run path.</p>
               <div class="button-row">
                 <a class="button secondary" href="/download/">Open download details</a>
               </div>
@@ -234,7 +224,7 @@
         <section class="page-section">
           <div class="section-head">
             <p class="section-label">Quick answers</p>
-            <h2 class="section-title">A few things people will ask right away.</h2>
+            <h2 class="section-title">Questions that matter before you try it.</h2>
           </div>
           <div class="faq-list">
             <details class="faq-item">
