@@ -1,12 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title">
   <title>App home placeholder</title>
-  <rect width="640" height="400" rx="30" fill="#fff8f1"/>
-  <rect x="28" y="28" width="584" height="48" rx="16" fill="#fffdf8" stroke="#ddc7b4" stroke-width="2"/>
-  <rect x="42" y="116" width="256" height="232" rx="24" fill="#fffdf8" stroke="#ddc7b4" stroke-width="2"/>
-  <rect x="320" y="116" width="118" height="108" rx="24" fill="#ffd9cc" stroke="#ddc7b4" stroke-width="2"/>
-  <rect x="452" y="116" width="118" height="108" rx="24" fill="#cfe4ff" stroke="#ddc7b4" stroke-width="2"/>
-  <rect x="320" y="240" width="250" height="108" rx="24" fill="#fff5c6" stroke="#ddc7b4" stroke-width="2"/>
-  <text x="52" y="60" fill="#6e6055" font-family="'IBM Plex Mono', monospace" font-size="18">APP HOME</text>
-  <text x="52" y="156" fill="#2c2018" font-family="'Syne', sans-serif" font-size="26" font-weight="700">New project</text>
-  <text x="52" y="190" fill="#6e6055" font-family="'Instrument Sans', sans-serif" font-size="20">Start something weird.</text>
+  <rect width="640" height="400" rx="30" fill="#f4ecdd"/>
+  <rect x="24" y="24" width="592" height="352" rx="26" fill="#fffef9" stroke="rgba(23,32,39,0.14)" stroke-width="2"/>
+  <rect x="42" y="42" width="556" height="44" rx="16" fill="#fbf7ef" stroke="rgba(23,32,39,0.08)" stroke-width="2"/>
+  <text x="62" y="68" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="16" letter-spacing="2">APP HOME</text>
+  <rect x="42" y="110" width="248" height="226" rx="22" fill="#fffef9" stroke="#ff9d7d" stroke-width="2"/>
+  <text x="62" y="146" fill="#101417" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">New local project</text>
+  <text x="62" y="178" fill="#4d5d69" font-family="Arial, Helvetica, sans-serif" font-size="18">Open a workspace for prompts, assets,</text>
+  <text x="62" y="202" fill="#4d5d69" font-family="Arial, Helvetica, sans-serif" font-size="18">tools, and outputs.</text>
+  <rect x="60" y="234" width="170" height="12" rx="6" fill="#d8ff3e"/>
+  <rect x="60" y="258" width="132" height="10" rx="5" fill="#24303b" opacity=".18"/>
+  <rect x="314" y="110" width="120" height="100" rx="20" fill="#f1fbff" stroke="#8ce7ff" stroke-width="2"/>
+  <rect x="448" y="110" width="132" height="100" rx="20" fill="#fff3ed" stroke="#ff9d7d" stroke-width="2"/>
+  <rect x="314" y="226" width="266" height="110" rx="20" fill="#101417"/>
+  <path d="M334 254h224" stroke="#8ce7ff" stroke-opacity=".12" stroke-width="1"/>
+  <path d="M334 286h224" stroke="#8ce7ff" stroke-opacity=".12" stroke-width="1"/>
+  <path d="M334 318h224" stroke="#8ce7ff" stroke-opacity=".12" stroke-width="1"/>
+  <circle cx="366" cy="302" r="12" fill="#ff9d7d"/>
+  <circle cx="452" cy="270" r="12" fill="#8ce7ff"/>
+  <circle cx="530" cy="314" r="12" fill="#d8ff3e"/>
+  <path d="M378 298h58M464 274l54 34" stroke="#fffef9" stroke-width="4" stroke-linecap="round" fill="none"/>
 </svg>

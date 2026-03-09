@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
   <title>Compare icon</title>
-  <rect width="96" height="96" rx="28" fill="#fff5c6"/>
-  <rect x="20" y="24" width="22" height="42" rx="10" fill="#fffdf8" stroke="#2c2018" stroke-width="3"/>
-  <rect x="54" y="24" width="22" height="42" rx="10" fill="#ffd9cc" stroke="#2c2018" stroke-width="3"/>
-  <path d="M24 76h48" stroke="#2c2018" stroke-width="4" stroke-linecap="round"/>
+  <rect width="96" height="96" rx="28" fill="#f8f5de"/>
+  <rect x="20" y="24" width="22" height="42" rx="10" fill="#fffef9" stroke="#101417" stroke-width="3"/>
+  <rect x="54" y="24" width="22" height="42" rx="10" fill="#ffdbc8" stroke="#101417" stroke-width="3"/>
+  <path d="M24 76h48" stroke="#101417" stroke-width="4" stroke-linecap="round"/>
+  <path d="M20 20c18-8 38-8 56 0" stroke="#d8ff3e" stroke-width="3" stroke-linecap="round" fill="none"/>
 </svg>

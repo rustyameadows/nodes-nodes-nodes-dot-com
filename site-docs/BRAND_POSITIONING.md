@@ -11,7 +11,9 @@ Current product truths pulled from the reference docs:
 - local-first and single-user in v1
 - project-based workflow with one canvas per project
 - OpenAI image and text runs are supported
+- Google Gemini image and text runs are supported
 - Topaz image transforms are supported
+- queue state and provider request-response debug data are visible
 - asset review includes grid, 2-up, and 4-up comparison modes
 
 ## Audience
@@ -41,7 +43,7 @@ For creative AI power users who are tired of bouncing between prompts, provider 
 - The asset viewer is a core differentiator, not a secondary gallery.
 
 ### 4. One interface across supported providers
-- The current product truth is OpenAI plus Topaz in one workflow surface.
+- The current product truth is OpenAI, Google Gemini, and Topaz in one workflow surface.
 - Provider execution and job state are visible inside the app instead of being scattered across separate tools.
 
 ## Differentiators
@@ -84,7 +86,7 @@ Use these facts consistently:
 - `Nodes Nodes Nodes is a macOS alpha for creative AI workflows.`
 - `It is currently built for a single local user.`
 - `It combines a node canvas, provider runs, and output review in one desktop app.`
-- `Waitlist and download flows are still being finalized.`
+- `The waitlist is still a placeholder, and the current early-alpha handoff can point to the GitHub repo.`
 
 Safe supporting language:
 - `early access`
@@ -100,7 +102,7 @@ Do not claim any of the following unless the product docs change first:
 - Windows or Linux support
 - publicly available general release
 - a live waitlist integration
-- an immediately downloadable public alpha build
+- a polished self-serve public alpha install flow
 - provider coverage beyond the currently documented support
 
 ## Compatibility Note

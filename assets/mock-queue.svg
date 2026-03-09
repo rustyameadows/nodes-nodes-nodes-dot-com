@@ -1,13 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title">
   <title>Queue placeholder</title>
-  <rect width="640" height="400" rx="30" fill="#fff3da"/>
-  <rect x="52" y="62" width="536" height="62" rx="20" fill="#fffdf8" stroke="#ddc7b4" stroke-width="2"/>
-  <rect x="52" y="146" width="536" height="62" rx="20" fill="#fffdf8" stroke="#ddc7b4" stroke-width="2"/>
-  <rect x="52" y="230" width="536" height="62" rx="20" fill="#fffdf8" stroke="#ddc7b4" stroke-width="2"/>
-  <circle cx="92" cy="94" r="12" fill="#ff7a59"/>
-  <circle cx="92" cy="178" r="12" fill="#9ec9ff"/>
-  <circle cx="92" cy="262" r="12" fill="#b8ddb1"/>
-  <rect x="130" y="86" width="186" height="16" rx="8" fill="#2c2018" opacity=".18"/>
-  <rect x="130" y="170" width="224" height="16" rx="8" fill="#2c2018" opacity=".18"/>
-  <rect x="130" y="254" width="172" height="16" rx="8" fill="#2c2018" opacity=".18"/>
+  <rect width="640" height="400" rx="30" fill="#f6efe1"/>
+  <rect x="24" y="24" width="592" height="352" rx="26" fill="#fffef9" stroke="rgba(23,32,39,0.14)" stroke-width="2"/>
+  <rect x="42" y="54" width="360" height="292" rx="22" fill="#101417"/>
+  <rect x="422" y="54" width="176" height="292" rx="22" fill="#fbf7ef" stroke="rgba(23,32,39,0.08)" stroke-width="2"/>
+  <text x="448" y="86" fill="#4d5d69" font-family="Menlo, Consolas, monospace" font-size="15" letter-spacing="2">DEBUG</text>
+  <rect x="60" y="82" width="324" height="56" rx="18" fill="#fffef9" stroke="#ff9d7d" stroke-width="2"/>
+  <rect x="60" y="154" width="324" height="56" rx="18" fill="#fffef9" stroke="#8ce7ff" stroke-width="2"/>
+  <rect x="60" y="226" width="324" height="56" rx="18" fill="#fffef9" stroke="#d8ff3e" stroke-width="2"/>
+  <circle cx="90" cy="110" r="10" fill="#ff9d7d"/>
+  <circle cx="90" cy="182" r="10" fill="#8ce7ff"/>
+  <circle cx="90" cy="254" r="10" fill="#5ec78d"/>
+  <rect x="122" y="102" width="132" height="12" rx="6" fill="#24303b" opacity=".24"/>
+  <rect x="122" y="174" width="164" height="12" rx="6" fill="#24303b" opacity=".24"/>
+  <rect x="122" y="246" width="146" height="12" rx="6" fill="#24303b" opacity=".24"/>
+  <rect x="446" y="114" width="128" height="12" rx="6" fill="#8ce7ff"/>
+  <rect x="446" y="142" width="112" height="9" rx="4.5" fill="#24303b" opacity=".18"/>
+  <rect x="446" y="190" width="128" height="12" rx="6" fill="#ff9d7d"/>
+  <rect x="446" y="218" width="96" height="9" rx="4.5" fill="#24303b" opacity=".18"/>
+  <rect x="446" y="266" width="128" height="12" rx="6" fill="#d8ff3e"/>
+  <rect x="446" y="294" width="86" height="9" rx="4.5" fill="#24303b" opacity=".18"/>
 </svg>

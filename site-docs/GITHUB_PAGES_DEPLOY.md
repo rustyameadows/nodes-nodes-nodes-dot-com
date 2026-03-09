@@ -31,7 +31,7 @@ Publish a plain static marketing site for `nodesnodesnodes.com` from this dedica
 
 Notes:
 - each public route is a real folder with an `index.html`
-- `styles/site.css` should hold the shared black-and-white design system
+- `styles/site.css` should hold the shared light marketing design system
 - `scripts/site.js` is optional and should stay minimal
 - `CNAME` should contain only `nodesnodesnodes.com`
 
@@ -119,10 +119,10 @@ After DNS and Pages are configured, verify:
   - `/privacy/`
 
 ## Placeholder CTA Handling
-Because there is no waitlist backend or public alpha artifact yet:
+Because there is no waitlist backend yet and the alpha is still early:
 - `Join the waitlist` should point to an internal placeholder section or page state, not a form submit
 - `Download the alpha` should point to `/download/` once the site exists
-- `/download/` should clearly state that the public alpha is not posted yet
+- `/download/` should clearly hand users to the GitHub repo as the current early-alpha source of truth
 
 ## Future Upgrade Path
 When the site grows beyond a few static pages, the next acceptable upgrade is a static generator. Until then, keep the site as plain files so GitHub Pages remains trivial to operate.

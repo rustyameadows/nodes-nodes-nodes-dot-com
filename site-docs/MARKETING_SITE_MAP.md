@@ -9,7 +9,7 @@ This document defines the full marketing-site information architecture after the
 - the site must not claim collaboration, cloud sync, Windows support, or a broad public release
 - the primary global CTA label remains `Join the waitlist`
 - the secondary global CTA label remains `Download the alpha`
-- until the real integrations exist, waitlist and download targets are placeholder destinations with honest status copy
+- until the real integrations exist, the waitlist remains a placeholder destination and `/download/` should honestly hand people to the GitHub repo
 
 ## Global Navigation
 Required nav items:
@@ -70,7 +70,7 @@ Copy emphasis:
 - comparison-oriented asset review
 
 Allowed placeholders:
-- grayscale UI mock blocks
+- stylized UI mock blocks
 
 ### `/workflow/`
 Goal:
@@ -99,17 +99,17 @@ Goal:
 Required sections for v1:
 - current status message
 - macOS alpha label
-- future release source note
-- system expectations placeholder
-- future installation steps placeholder
+- GitHub repo handoff
+- system expectations note
+- source-run fallback note
 
 Required status copy:
-- `Public alpha download is not posted yet.`
-- `When available, this page should point to GitHub Releases artifacts and installation notes.`
+- `The current early alpha lives on GitHub.`
+- `Expect a very early macOS-first, unsigned Apple Silicon build with repo-driven install notes.`
 
 Allowed placeholders:
-- disabled download card
-- future release table shell with `Coming soon`
+- GitHub handoff card
+- expectations card
 
 ### `/faq/`
 Goal:
