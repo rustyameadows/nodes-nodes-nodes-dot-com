@@ -3,45 +3,36 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Nodes Nodes Nodes | Local-first Mac app for AI workflows</title>
+    <title>Nodes Nodes Nodes | A calmer way to work with AI on your Mac</title>
     <meta
       name="description"
-      content="Nodes Nodes Nodes is a local-first Mac app for text, data, images, video, files, and more. Build infinite-canvas workflows, bring your own provider keys, wire in local tools, and inspect every run."
+      content="Nodes Nodes Nodes is a very early Mac app that keeps prompts, runs, outputs, and review in one place."
     />
-    <meta name="theme-color" content="#fffef9" />
+    <meta name="theme-color" content="#f7f2e8" />
     <link rel="canonical" href="https://nodesnodesnodes.com/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Nodes Nodes Nodes | Local-first Mac app for AI workflows" />
+    <meta property="og:title" content="Nodes Nodes Nodes | A calmer way to work with AI on your Mac" />
     <meta
       property="og:description"
-      content="Infinite-canvas workflows for text, data, images, video, files, local tools, and debuggable runs."
+      content="Keep projects, runs, and outputs together in one very early Mac app."
     />
     <meta property="og:url" content="https://nodesnodesnodes.com/" />
     <meta property="og:image" content="https://nodesnodesnodes.com/assets/og-card.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Local-first Mac app for AI workflows. Nodes Nodes Nodes." />
+    <meta property="og:image:alt" content="Nodes Nodes Nodes marketing card." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Nodes Nodes Nodes | Local-first Mac app for AI workflows" />
+    <meta name="twitter:title" content="Nodes Nodes Nodes | A calmer way to work with AI on your Mac" />
     <meta
       name="twitter:description"
-      content="Build infinite-canvas workflows on your Mac, bring your own provider keys, wire in local tools, and inspect every run."
+      content="A very early Mac app for keeping prompts, runs, outputs, and review together."
     />
     <meta name="twitter:image" content="https://nodesnodesnodes.com/assets/og-card.png" />
-    <meta
-      name="twitter:image:alt"
-      content="Local-first Mac app for AI workflows. Nodes Nodes Nodes."
-    />
+    <meta name="twitter:image:alt" content="Nodes Nodes Nodes marketing card." />
     <link rel="icon" href="/assets/apple-touch-icon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Syne:wght@400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="/styles/site.css" />
   </head>
   <body>
@@ -50,10 +41,12 @@
       <header class="site-header">
         <a class="wordmark" href="/" aria-label="Nodes Nodes Nodes home">
           <span class="wordmark-title">Nodes Nodes Nodes</span>
+          <span class="wordmark-subtitle">Local-first Mac app for creative AI work.</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
           <a href="/product/">Product</a>
           <a href="/workflow/">Workflow</a>
+          <a href="/node-library/">Node Library</a>
           <a href="/download/">Download</a>
           <a href="/faq/">FAQ</a>
         </nav>
@@ -63,186 +56,178 @@
         <section class="page-hero">
           <div class="hero-grid">
             <div class="hero-copy">
-              <p class="eyebrow">Local-first Mac app for multimodal AI workflows</p>
-              <h1 class="page-title">Build, run, inspect, and review in one place.</h1>
+              <p class="eyebrow">Very early Mac alpha</p>
+              <h1 class="page-title">A calmer way to work with AI on your Mac.</h1>
               <p class="lede">
-                Nodes Nodes Nodes is a local-first Mac app for text, data, images, video, files, and local tools.
-                Build workflows on an infinite canvas, bring your own provider keys, and inspect queue state plus
-                provider responses without leaving the project.
+                Nodes Nodes Nodes keeps prompts, runs, outputs, and review in one project space, so your work is
+                easier to follow from the first idea to the next pass.
               </p>
-              <div class="hero-actions">
-                <a class="button" href="#alpha-access">Join the waitlist</a>
-                <a class="button secondary" href="/download/">Download the alpha</a>
+              <div class="button-row">
+                <a class="button" href="/download/">See the early alpha</a>
+                <a class="button secondary" href="/node-library/">Browse the Node Library</a>
               </div>
-              <p class="hero-note">Very early macOS alpha for Apple Silicon. Bring your own provider keys.</p>
+              <p class="hero-note">Mac only for now. Single-user. Available through GitHub.</p>
             </div>
-            <aside class="hero-visual" aria-label="Product proof">
-              <figure class="shot-card hero-shot-card">
-                <img
-                  class="hero-shot"
-                  src="/assets/hero-beauty.png"
-                  alt="Nodes Nodes Nodes app window showing an infinite canvas workflow on a pink background."
-                />
-              </figure>
-              <ul class="hero-proof-list hero-visual-list" aria-label="Key capabilities">
-                <li>Local files</li>
-                <li>Bring your own keys</li>
-                <li>Multimodal workflows</li>
-                <li>Queue + debug visibility</li>
-              </ul>
-            </aside>
+            <div class="screenshot-frame">
+              <img
+                src="/docs/readme-hero-list.png"
+                alt="Nodes Nodes Nodes showing a model block connected to a list on a dark canvas."
+              />
+            </div>
           </div>
         </section>
 
         <section class="page-section">
-          <div class="section-head centered">
-            <p class="section-label">What it does</p>
-            <h2 class="section-title">One place for the real workflow.</h2>
-            <p class="section-copy">
-              Most AI tools stop at generation. Nodes Nodes Nodes keeps setup, runs, debugging, and review in one local
-              workspace so the work stays easy to follow from first prompt to final output.
+          <div class="section-head">
+            <p class="section-label">Why it feels different</p>
+            <h2 class="section-title">The whole project stays in view.</h2>
+            <p>
+              Instead of juggling tabs, folders, and half-finished notes, you can keep the setup, the run, and the
+              output together in one place.
             </p>
+          </div>
+          <div class="three-column">
+            <article class="card">
+              <h3>Your work stays together</h3>
+              <p>Each project keeps its own canvas, runs, and outputs, so one experiment does not spill into another.</p>
+            </article>
+            <article class="card">
+              <h3>You can see what happened</h3>
+              <p>When a run works or fails, the app gives you a clear place to check instead of leaving you guessing.</p>
+            </article>
+            <article class="card">
+              <h3>Review is part of the flow</h3>
+              <p>Compare results, keep the useful ones, and move into the next pass without losing your thread.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="page-section">
+          <div class="section-head">
+            <p class="section-label">Core parts of the app</p>
+            <h2 class="section-title">A few simple spaces, each with a job to do.</h2>
           </div>
           <div class="four-column">
-            <article class="card">
-              <img class="card-icon" src="/assets/icon-canvas.svg" alt="" />
-              <h3>Infinite canvas workflows</h3>
-              <p>Build with notes, lists, templates, assets, and model nodes on one canvas.</p>
+            <article class="surface-card">
+              <div class="placeholder one"><span>Project Home placeholder</span></div>
+              <div class="stack">
+                <h3>Project Home</h3>
+                <p>Start a new project or reopen an older one without mixing everything together.</p>
+              </div>
             </article>
-            <article class="card">
-              <img class="card-icon" src="/assets/icon-run.svg" alt="" />
-              <h3>Text, data, images, video, files</h3>
-              <p>Work across mixed inputs and outputs without flattening everything into one chat thread.</p>
+            <article class="surface-card">
+              <div class="placeholder two"><span>Canvas placeholder</span></div>
+              <div class="stack">
+                <h3>Canvas</h3>
+                <p>Build from notes, lists, templates, assets, and model blocks on one open workspace.</p>
+              </div>
             </article>
-            <article class="card">
-              <img class="card-icon" src="/assets/icon-compare.svg" alt="" />
-              <h3>Local tools + provider keys</h3>
-              <p>Use your own keys, add local tools, and keep everything inside the workflow.</p>
+            <article class="surface-card">
+              <div class="placeholder three"><span>Queue placeholder</span></div>
+              <div class="stack">
+                <h3>Runs</h3>
+                <p>Check what is queued, what is running, and what happened after each attempt.</p>
+              </div>
             </article>
-            <article class="card">
-              <img class="card-icon" src="/assets/icon-compare.svg" alt="" />
-              <h3>Debug, inspect, iterate</h3>
-              <p>See each run, review the results, and keep moving without losing the thread.</p>
+            <article class="surface-card">
+              <div class="placeholder four"><span>Review placeholder</span></div>
+              <div class="stack">
+                <h3>Review</h3>
+                <p>Look through outputs, compare side by side, and keep track of what is worth returning to.</p>
+              </div>
             </article>
           </div>
         </section>
 
         <section class="page-section">
+          <div class="section-head">
+            <p class="section-label">Node Library</p>
+            <h2 class="section-title">Browse the building blocks before you use them.</h2>
+            <p>
+              The Node Library is a simple guide to the main block types in the app, so it is easier to understand
+              what belongs on the canvas and what each block is good at.
+            </p>
+          </div>
+          <div class="node-grid">
+            <article class="node-card">
+              <div class="placeholder one"><span>Model</span></div>
+              <h3>Model</h3>
+              <p>Use a model block when you want to run something through OpenAI, Google Gemini, or Topaz.</p>
+            </article>
+            <article class="node-card">
+              <div class="placeholder two"><span>Text Note</span></div>
+              <h3>Text Note</h3>
+              <p>Use a note when you want plain words, prompts, reminders, or directions close to the rest of the work.</p>
+            </article>
+            <article class="node-card">
+              <div class="placeholder three"><span>List</span></div>
+              <h3>List</h3>
+              <p>Use a list when you want rows you can read, shape, and send into the next step.</p>
+            </article>
+            <article class="node-card">
+              <div class="placeholder four"><span>Template</span></div>
+              <h3>Template</h3>
+              <p>Use a template when you want repeatable wording with a few parts you can swap in and out.</p>
+            </article>
+            <article class="node-card">
+              <div class="placeholder one"><span>Uploaded Asset</span></div>
+              <h3>Uploaded Asset</h3>
+              <p>Use an uploaded asset when you want a real image or file from your project inside the canvas.</p>
+            </article>
+            <article class="node-card">
+              <div class="placeholder two"><span>Generated Asset</span></div>
+              <h3>Generated Asset</h3>
+              <p>Use generated assets to keep the things you made connected to the work that produced them.</p>
+            </article>
+          </div>
+          <div class="button-row">
+            <a class="button secondary" href="/node-library/">Open the full Node Library</a>
+          </div>
+        </section>
+
+        <section class="page-section">
+          <div class="section-head">
+            <p class="section-label">Getting in</p>
+            <h2 class="section-title">The current release is early, but usable.</h2>
+          </div>
           <div class="two-column">
-            <div>
-              <div class="section-head">
-                <p class="section-label">Workflow loop</p>
-                <h2 class="section-title">Build, run, inspect, iterate.</h2>
-              </div>
-              <ol class="number-list">
-                <li>
-                  <span class="step-index">01</span>
-                  <div>
-                    <h3>Start a local project</h3>
-                    <p>Give the experiment a real home with its own files, state, and history.</p>
-                  </div>
-                </li>
-                <li>
-                  <span class="step-index">02</span>
-                  <div>
-                    <h3>Connect the graph</h3>
-                    <p>Drop in notes, lists, templates, assets, and model nodes, then wire the workflow you actually want.</p>
-                  </div>
-                </li>
-                <li>
-                  <span class="step-index">03</span>
-                  <div>
-                    <h3>Run, inspect, and compare</h3>
-                    <p>Send jobs through your own providers, inspect each run, and review the outputs before the next pass.</p>
-                  </div>
-                </li>
-              </ol>
-            </div>
-            <article class="media-card">
-              <img src="/assets/hero-collage.svg" alt="Editorial collage showing notes, queue state, and review surfaces around a dark workflow canvas." />
-            </article>
-          </div>
-        </section>
-
-        <section class="page-section">
-          <div class="section-head">
-            <p class="section-label">Product surfaces</p>
-            <h2 class="section-title">Different surfaces for different parts of the work.</h2>
-            <p class="section-copy">
-              Home, canvas, runs, and review each handle a different part of the process instead of forcing everything
-              into one crowded view.
-            </p>
-          </div>
-          <div class="frame-grid">
-            <article class="frame">
-              <img src="/assets/mock-home.svg" alt="Illustrated app home concept for Nodes Nodes Nodes." />
-              <span class="placeholder-label">APP HOME</span>
-            </article>
-            <article class="frame">
-              <img src="/assets/mock-canvas.svg" alt="Illustrated canvas concept for Nodes Nodes Nodes." />
-              <span class="placeholder-label">CANVAS</span>
-            </article>
-            <article class="frame">
-              <img src="/assets/mock-queue.svg" alt="Illustrated queue concept for Nodes Nodes Nodes." />
-              <span class="placeholder-label">QUEUE</span>
-            </article>
-            <article class="frame">
-              <img src="/assets/mock-assets.svg" alt="Illustrated assets concept for Nodes Nodes Nodes." />
-              <span class="placeholder-label">ASSETS</span>
-            </article>
-          </div>
-        </section>
-
-        <section class="page-section" id="alpha-access">
-          <div class="section-head">
-            <p class="section-label">Alpha access</p>
-            <h2 class="section-title">Very early macOS alpha.</h2>
-            <p class="section-copy">
-              The GitHub repo has the current build, install notes, and source-run instructions.
-            </p>
-          </div>
-          <div class="cta-band">
-            <article class="cta-card">
-              <p class="badge">Join the waitlist</p>
-              <h3>Waitlist coming soon</h3>
-              <p>The waitlist is not live yet. For now, GitHub is the way in.</p>
-            </article>
-            <article class="cta-card">
-              <p class="badge">Download the alpha</p>
-              <h3>Download from GitHub</h3>
-              <p>Get the current Apple Silicon alpha, install notes, and source-run instructions on GitHub.</p>
+            <article class="download-card">
+              <p class="badge">How to get it</p>
+              <h3>Download it from GitHub today</h3>
+              <p>The current alpha lives on GitHub, along with the latest notes on what is included and what is still rough.</p>
               <div class="button-row">
-                <a class="button secondary" href="/download/">Open download details</a>
+                <a class="button" href="/download/">Open download details</a>
               </div>
+            </article>
+            <article class="download-card">
+              <p class="badge">What to expect</p>
+              <h3>Mac first and still settling in</h3>
+              <p>This is a very early Apple Silicon alpha. The focus right now is one person, one Mac, and real projects that stay local.</p>
             </article>
           </div>
         </section>
 
         <section class="page-section">
           <div class="section-head">
-            <p class="section-label">Quick answers</p>
-            <h2 class="section-title">A few things to know before you try it.</h2>
+            <p class="section-label">Quick questions</p>
+            <h2 class="section-title">A few useful answers before you try it.</h2>
           </div>
           <div class="faq-list">
             <details class="faq-item">
               <summary>What is Nodes Nodes Nodes?</summary>
-              <p>A local-first Mac app for building, running, debugging, and reviewing AI workflows on an infinite canvas.</p>
+              <p>It is a local-first Mac app for building, running, and reviewing creative AI work in one place.</p>
             </details>
             <details class="faq-item">
               <summary>Is it available right now?</summary>
-              <p>Yes. It is a very early macOS alpha, available through the GitHub repo.</p>
+              <p>Yes. The current version is a very early alpha that you get through GitHub.</p>
             </details>
             <details class="faq-item">
-              <summary>What does it work with today?</summary>
+              <summary>Which providers work today?</summary>
               <p>OpenAI, Google Gemini, and Topaz.</p>
             </details>
             <details class="faq-item">
               <summary>Does it run in the browser?</summary>
-              <p>No. It is a desktop app.</p>
-            </details>
-            <details class="faq-item">
-              <summary>Does it support collaboration or cloud sync?</summary>
-              <p>Not yet. Today it is built for one person working locally.</p>
+              <p>No. Right now it is a Mac desktop app.</p>
             </details>
           </div>
           <div class="button-row">
@@ -255,11 +240,12 @@
         <div class="footer-top">
           <div>
             <p class="wordmark-title">Nodes Nodes Nodes</p>
-            <p class="footer-meta">Local-first Mac app for multimodal AI workflows.</p>
+            <p class="footer-meta">Local-first Mac app for creative AI work.</p>
           </div>
           <nav class="footer-links" aria-label="Footer">
             <a href="/product/">Product</a>
             <a href="/workflow/">Workflow</a>
+            <a href="/node-library/">Node Library</a>
             <a href="/download/">Download</a>
             <a href="/faq/">FAQ</a>
             <a href="/privacy/">Privacy</a>
