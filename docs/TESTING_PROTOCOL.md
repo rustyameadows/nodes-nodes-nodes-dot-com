@@ -14,13 +14,22 @@ Run these from the repo root:
 
 ```bash
 npm run lint
+npm run check:design-system
 npm run test:unit
 npm run build
 npm run db:generate
 ```
 
+Mixed Gemini output hardening:
+- cover request-shape parity for `Nano Banana 2` `Images & Text` in both `generate` and `edit`
+- cover provider normalization for both image+text and image-only mixed responses
+- cover worker attempt-persistence for mixed image-only diagnostics and mixed image+text generated descriptors
+- cover job-attempt serialization fallback so stored smart text outputs can still hydrate generated descriptors even if explicit descriptor arrays are absent
+- cover queue-debug formatting so experimental image-only mixed runs explain “Gemini returned image-only” instead of reading like a renderer failure
+
 Expected results:
 - `lint` passes
+- `check:design-system` passes
 - `test:unit` passes
 - `build` emits `dist/renderer` and `dist/electron`
 - `db:generate` emits a migration under `drizzle/`
@@ -39,21 +48,50 @@ What it does:
 - inspects the native application menu from Electron main
 - waits for app home
 - opens app settings from app home before any project exists
+- opens the Node Library from app home
+- verifies the Node Library index uses the quiet specimen-first gallery:
+  - compact header with home action + inline search only
+  - no hero metrics, I/O pills, or display-mode pills on the index
+  - each card renders a centered real node specimen with no clipping
+  - desktop stays on a stable 3-column gallery instead of a cramped auto-fit 4-up grid
+- verifies model, list, and template library detail playgrounds render
+- verifies the shared searchable model selector updates the model playground
+- verifies Node Library playgrounds boot neutral with no selected node/rails
+- verifies the model detail route opens its standalone model fixture in the full shell while still loading unfocused
+- verifies the left rail no longer shows a `Display Modes` section
+- verifies the bottom canvas overlay row exposes `Compact`, `Preview`, `Edit`, and `Resize`
+- verifies the bottom row changes the primary demo node mode without auto-selecting it
+- verifies mode switches keep the primary demo node centered in the playground
+- verifies those mode switches feel like one motion instead of a resize snap followed by a second recenter jump
+- verifies the first click into `Edit` or `Resize` uses the preflight shell size immediately instead of requiring a second click to settle the framing
+- verifies repeated `Preview -> Edit -> Resize -> Edit` switches keep the primary node fit-framed instead of clipping the expanded shell
+- verifies rapid repeated bottom-row clicks still recenter from the live viewport and do not accumulate left/right or top/bottom drift across mode changes
+- verifies the model detail fixture has no upstream prompt note
+- verifies uploaded/generated asset detail fixtures render placeholder previews instead of broken images
+- verifies generated asset detail keeps the visible model-to-asset connection
 - creates a project from the native `File > New Project` menu
 - triggers one native `Canvas > Add Model Node` command on canvas
+- verifies the inserted model opens directly in the full response-settings shell
 - writes a canvas snapshot with two nodes through the live preload bridge
 - verifies canvas interaction behavior in the real Electron window:
   - `A` opens the insert menu
   - multi-selected nodes move as one batch
   - `C` connects exactly two selected nodes
   - `Enter` opens the selected node's inline full editor
-  - node double-click opens the same primary inline editor mapping
+  - single-click on a `preview` or `compact` model only selects it, keeps its size unchanged, and reveals the shared rails plus the external side run launcher
+  - node double-click opens the same primary inline editor mapping on `preview` / `compact` nodes, immediately shows the correct top-left mode pills for the new shell, keeps model full shells open after focus moves away, keeps previously opened full model shells open when a different model is opened next, and fit-zooms from preflight-measured or predicted outer shell bounds without clipping or a follow-up camera chase
+  - clicking the top-rail `Default` or `Compact` pills on an expanded node re-anchors from the live available viewport center and triggers the same predictive fit/zoom reframe used by the Node Library mode dock
+  - unfocused model nodes that remain in `full` or persisted `resized` keep the large body visible but hide the shared top/bottom rails until refocused
+  - double-click on a `resized` node keeps it resized and only focuses the viewport
+  - selected model nodes in `preview`, `full`, and persisted `resized` show the bottom-right resize handle, and resize enters `displayMode: "resized"` at drag start and keeps it until `Default` or `Compact`
+  - a shared bottom-center selection rail shows `Center` for single selection and `Center Selection` for multi-selection; both fit the selected outer shell bounds without relying on image-only selection state
   - `Cmd/Ctrl+Z` and `Cmd/Ctrl+Shift+Z` undo/redo batch move, connection, inline edit, and node insertion
   - typing inside inline editors does not trigger canvas shortcuts
   - resized asset nodes can still be dragged after resize
   - list full mode renders as a real editable sheet
   - template full mode keeps chips, editor, and merge preview contained
-- imports an SVG asset through the live preload bridge
+  - legacy generated nodes are auto-migrated onto one-time spawned-child behavior on reload
+- drops an SVG file onto the live canvas and verifies the renderer upload path creates a persisted asset-source node
 - navigates through assets, queue, project settings, and app settings through native menu commands
 - verifies:
   - preload bridge exists
@@ -63,12 +101,19 @@ What it does:
   - app home shows archived projects in a separate section when archived projects exist
   - app home can reopen an existing project card
   - `Home` works from the workspace Menu pill and native mac menu
+  - light non-canvas views render with the new design-system shell while the main canvas remains black
   - SQLite file is created
   - native new-project and add-node commands round-trip into the renderer
+  - Node Library routes and playgrounds render in the real Electron app
+  - Node Library index cards render specimen-first stages instead of metadata-heavy cards
+  - the canvas insert picker shows registry-driven node labels
+  - native model-variant insertion can create a preconfigured model node
   - canvas data round-trips
   - canvas shortcuts stay canvas-scoped and do not fire while a prompt editor or other editable control is focused
   - asset metadata exists
   - asset file exists on disk
+  - uploaded asset nodes persist across reload and remain draggable after resize
+  - generated-output receipt keys persist in the saved canvas document
   - queue screen renders
   - project settings render with project metadata only
   - provider credentials render in app settings
@@ -81,6 +126,12 @@ Expected output:
   - `canvasScreenshotPath`
   - `modelPreviewScreenshotPath`
   - `modelFullScreenshotPath`
+  - `nodeLibraryScreenshotPath`
+  - `nodeLibraryModelScreenshotPath`
+  - `nodeLibraryListScreenshotPath`
+  - `nodeLibraryTemplateScreenshotPath`
+  - `nodeFocusBeforeScreenshotPath`
+  - `nodeFocusScreenshotPath`
   - `listFullScreenshotPath`
   - `templateFullScreenshotPath`
   - `resizedAssetScreenshotPath`
@@ -115,13 +166,17 @@ What it does:
   - branded bundle metadata and icon wiring
   - preload bridge availability
   - app home render
+  - Node Library gallery render with centered specimen cards
+  - one model detail playground screenshot
+  - one list detail playground screenshot
   - app settings render with provider credentials before any project exists
   - project creation
   - canvas round-trip
   - model full screenshot capture
   - list full screenshot capture
   - template full screenshot capture
-  - asset import and assets view render
+  - synthetic canvas drag/drop upload creates a persisted asset and asset-source node
+  - assets view render after the canvas upload
   - queue view render
   - project settings render without provider credentials
   - app settings render with provider credentials
@@ -199,37 +254,49 @@ Run this when touching workflow or asset UX:
 1. Launch `npm run dev`.
 2. Confirm app home renders.
 3. Open App Settings from home and return to home.
-4. Create a project from app home.
-5. Confirm the canvas route loads.
-6. Open Home from the in-app `Menu` pill and confirm the project card is visible.
-7. Reopen the project from home.
-8. Add or restore at least one text note and one model node.
-9. Multi-select two nodes and drag them together.
-10. Press `C` with exactly two selected nodes and confirm a connection is created.
-11. Press `Enter` on a single selected node and confirm the expected inline full editor opens.
-12. Double-click a node and confirm it opens the same primary inline editor as `Enter`.
-13. Click into a prompt, note, list cell, or template textarea and confirm canvas shortcuts do not fire while typing.
-14. Resize a text/list/template/asset node and confirm the size persists after deselecting or reloading.
-15. Open a template node with a connected list and confirm variable chips, compatibility state, and merge preview render inline.
-16. Open a list node in full mode and confirm it behaves like an inline editable sheet instead of the old stacked field controls.
-17. Resize an asset node, then drag it directly from the media surface and confirm it still moves cleanly.
-18. Confirm phantom output previews appear only for the active node and disappear when you deselect or change selection.
-19. Use `Cmd/Ctrl+Z` and `Cmd/Ctrl+Shift+Z` to undo/redo one move, one connection, and one inline edit.
-20. Import an asset.
-21. Open the Assets view and confirm the imported asset appears.
-22. Open Project Settings and confirm the project metadata renders and provider credentials do not appear there.
-23. Open App Settings and confirm provider credentials render there.
-24. If testing on macOS, confirm:
+4. Open Node Library from home.
+5. Open the model detail page and confirm the shared searchable model selector works.
+6. Open the list and template detail pages and confirm their playgrounds are interactive.
+7. Return home and create a project from app home.
+8. Confirm the canvas route loads.
+9. Open Home from the in-app `Menu` pill and confirm the project card is visible.
+10. Reopen the project from home.
+11. Add or restore at least one text note and one model node.
+12. Open the add-node picker and confirm registry-driven entries such as `Add List / Sheet`, `Add Template Node`, and `Add Uploaded Assets` are present.
+13. Multi-select two nodes and drag them together.
+14. Press `C` with exactly two selected nodes and confirm a connection is created.
+15. Press `Enter` on a single selected node and confirm the expected inline full editor opens.
+16. Double-click a `preview` or `compact` node and confirm it opens the same primary inline editor as `Enter` with a gentle viewport focus animation.
+17. Double-click a model node from `preview` or `compact`, click empty canvas, then double-click a second model node and confirm the first model still stays in `full`.
+18. Double-click a `resized` node and confirm it stays resized while the viewport focuses to it.
+19. Click into a prompt, note, list cell, or template textarea and confirm canvas shortcuts do not fire while typing.
+20. Resize a text/list/template/asset node and confirm the size persists after deselecting or reloading.
+21. Open a template node with a connected list and confirm variable chips, compatibility state, and merge preview render inline.
+22. Open a list node in full mode and confirm it behaves like an inline editable sheet instead of the old stacked field controls.
+23. Resize an asset node, then drag it directly from the media surface and confirm it still moves cleanly.
+24. Confirm phantom output previews appear only for the active node and disappear when you deselect or change selection.
+25. Use `Cmd/Ctrl+Z` and `Cmd/Ctrl+Shift+Z` to undo/redo one move, one connection, and one inline edit.
+26. If a generated child node exists, resize or edit it, wait through at least one jobs poll, reload, and confirm it does not revert.
+27. Delete a generated child node, reload, and confirm it does not respawn.
+28. Import an asset.
+28. Open the Assets view and confirm the imported asset appears.
+29. Open Project Settings and confirm the project metadata renders and provider credentials do not appear there.
+30. Open App Settings and confirm provider credentials render there.
+31. Confirm the workspace menu, queue pill, insert picker, bottom-bar popovers, and bottom-center canvas selection rail all use the refreshed chrome without changing canvas node or connection rendering.
+32. Confirm focus-visible, disabled buttons, and compact-density tables/filters still read clearly on home, settings, queue, and assets.
+33. If testing on macOS, confirm:
    - `File`, `Project`, `Canvas`, `Edit`, `View`, and `Window` menus appear
    - `Cmd+,` opens App Settings
    - `File > New Project` opens a new project
    - `Project > Home` returns to app home
    - `Project > Assets` / `Queue` / `Project Settings` match the in-app menu behavior
    - `Canvas > Add Node…`, `Connect Selected Nodes`, `Duplicate Selected Node`, `Undo Canvas Change`, and `Redo Canvas Change` enable or disable correctly on canvas
-25. If API keys are configured, run at least one real provider job and verify:
-   - queue row created
-   - state changes visible
-   - output lands on canvas or in assets as appropriate
+34. If API keys are configured, run at least one real provider job and verify:
+  - queue row created
+  - state changes visible
+  - queue rows open the full execution record directly; there is no secondary summary inspector on the list page
+  - output lands on canvas or in assets as appropriate
+  - rerunning appends a fresh set of generated child nodes instead of replacing earlier ones
 
 ## Manual Packaged-App Checklist
 Run this against the packaged `.app` after `npm run package:mac`:

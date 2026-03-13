@@ -41,7 +41,7 @@ type Canvas = {
   updatedAt: string;
 };
 
-type WorkflowNodeDisplayMode = "preview" | "compact" | "resized";
+type WorkflowNodeDisplayMode = "preview" | "compact" | "full" | "resized";
 
 type WorkflowNodeSize = {
   width: number;
@@ -57,6 +57,27 @@ type WorkflowNode = {
   displayMode: WorkflowNodeDisplayMode;
   size: WorkflowNodeSize | null;
   // ...existing provider, prompt, source, and connection fields
+};
+
+type UploadedAssetNodeSettings = {
+  source: "uploaded";
+  assetName?: string;
+  assetWidth?: number | null;
+  assetHeight?: number | null;
+};
+
+type GeminiNodeSettings = {
+  textOutputTarget?: "note" | "list" | "template" | "smart";
+  maxOutputTokens?: number | null;
+  temperature?: number | null;
+  topP?: number | null;
+  topK?: number | null;
+  stopSequences?: string | null;
+  thinkingLevel?: "minimal" | "low" | "medium" | "high";
+  thinkingBudget?: number | null;
+  outputMode?: "images_and_text" | "images_only";
+  aspectRatio?: "auto" | "1:1" | "2:3" | "3:2" | "3:4" | "4:3" | "4:5" | "5:4" | "9:16" | "16:9" | "21:9";
+  imageSize?: "512" | "1K" | "2K" | "4K";
 };
 
 type Job = {
@@ -97,6 +118,11 @@ type Asset = {
   updatedAt: string;
 };
 
+type ImportedAssetResult = {
+  asset: Asset;
+  sourceName: string | null;
+};
+
 type JobPreviewFrame = {
   id: string;
   jobId: string;
@@ -126,7 +152,8 @@ type JobPreviewFrame = {
 - the canvas JSON now persists node-local presentation metadata:
   - `displayMode`
   - `size`
-- transient full-mode state and phantom previews remain renderer-only and are not stored in SQLite
+- the canvas JSON also persists `generatedOutputReceiptKeys`, which record completed generated job outputs that have already been materialized onto the canvas
+- template edit/full state and phantom previews remain renderer-only; model `full` mode is stored directly on the node through `displayMode`
 
 ### `jobs`
 - one row per submitted provider run
@@ -156,6 +183,24 @@ type JobPreviewFrame = {
 
 ### `provider_models`
 - renderer-facing provider/model capability metadata synced from the registry
+- `capabilities` now also stores provider-access state used directly by the model picker and App Settings:
+  - `billingAvailability`
+  - `accessStatus`
+  - `accessReason`
+  - `accessMessage`
+  - `lastCheckedAt`
+- for Gemini, those fields describe Google-project access for the saved `GOOGLE_API_KEY`, not a user-selected tier flag
+
+## Provider-Specific Node Settings
+- model node settings still live inside `canvases.canvas_document`
+- Gemini model nodes may now persist:
+  - shared text settings: `textOutputTarget`, `maxOutputTokens`, `temperature`, `topP`, `topK`
+  - Gemini 3 flash-family thinking: `thinkingLevel`
+  - Gemini 2.5-family thinking: `thinkingBudget`
+  - Gemini image settings: `temperature`, `aspectRatio`, `maxOutputTokens`, `topP`, `stopSequences`
+  - Gemini image models that expose them may also persist `imageSize`
+  - `gemini-3.1-flash-image-preview` may also persist `thinkingLevel` and `outputMode`
+- unsupported Gemini keys are pruned when a node switches to a model that does not support them
 
 ## Removed Tables
 - `canvas_nodes`
@@ -177,6 +222,11 @@ Worker behavior:
 - retries by moving it back to `queued` with a future `available_at`
 - marks it terminal on final success or failure
 
+`jobs.node_run_payload` now includes:
+- `runOrigin: "canvas-node" | "copilot"`
+- `runOrigin = "canvas-node"` for normal visible node runs
+- `runOrigin = "copilot"` for the session-only canvas copilot surface, which has no persisted source model node
+
 ## Filesystem References
 - `assets.storage_ref`
   - relative path under the app-data assets root
@@ -186,27 +236,59 @@ Worker behavior:
 The renderer never sees absolute paths; those refs are resolved only in main/worker/storage code.
 
 ## Text Output Model
-- GPT text generations now serialize parsed generated-node descriptors in `job_attempts.provider_response`.
+- OpenAI and Gemini text generations now serialize parsed generated-node descriptors in `job_attempts.provider_response`.
 - Renderer-facing jobs expose:
   - `latestTextOutputs`
   - `generatedNodeDescriptors`
+  - `generatedConnections`
+  - optional `mixedOutputDiagnostics` for experimental Gemini image/text attempts
 - Generated node descriptors can materialize:
   - `text-note`
   - `list`
   - `text-template`
-- `Smart Output` may produce multiple descriptors from one text response, but they stay unconnected in this pass.
+- Each generated descriptor includes:
+  - `descriptorId`
+  - `runOrigin`
+  - `sourceModelNodeId`, which may be `null` for copilot-origin runs
+- `Smart Output` may produce multiple descriptors from one text response plus a `generatedConnections` array that references those descriptors by `descriptorId`.
 - Parse failure falls back to one generated text-note descriptor instead of failing the job.
 - Those outputs do not create `assets` rows.
 - Queue debug data stores both the returned text and the parsed structured-output metadata inline in `job_attempts.provider_response`.
+- Queue UI consumes those typed job-debug payloads only on the dedicated execution-record route; the queue list itself stays a compact run ledger.
+- Experimental `Nano Banana 2` mixed image/text attempts may also store:
+  - `mixedOutputDiagnostics.requested`
+  - `mixedOutputDiagnostics.executionMode`
+  - `mixedOutputDiagnostics.inputImageCount`
+  - `mixedOutputDiagnostics.rawResponseTextPresent`
+  - `mixedOutputDiagnostics.candidateTextPartCount`
+  - `mixedOutputDiagnostics.imagePartCount`
+  - `mixedOutputDiagnostics.warningCode`
+  - `mixedOutputDiagnostics.warningMessage`
+- Once a generated output is inserted onto the canvas, it becomes a normal user-owned node. Provenance remains for source/debug UI, but the polling loop no longer rewrites the node's content, layout, or connections.
+- `generatedOutputReceiptKeys` prevent already-inserted outputs from being re-created on reload and prevent deleted generated nodes from coming back automatically.
+
+## Provider Access Refresh
+- provider registry sync remains the source of truth for `provider_models`
+- startup sync now also refreshes provider access where supported
+- saving, clearing, or manually refreshing `GOOGLE_API_KEY` rewrites Gemini access metadata in place
+- worker-side Gemini failures may also update `provider_models.capabilities` so later picker/settings reads reflect the latest blocked or limited state
 
 ## Canvas Presentation Metadata
 - `WorkflowNode.displayMode`
   - `preview`: default persisted surface
   - `compact`: persisted pill/tiny-node surface
+  - `full`: persisted expanded model editor surface
   - `resized`: persisted custom width/height
 - `WorkflowNode.size`
   - stored only when the node is in `resized`
-  - used for text notes, lists, templates, and asset nodes
+  - used for model nodes, text notes, lists, templates, and asset nodes
+- uploaded asset-source nodes also persist lightweight upload metadata in `WorkflowNode.settings`:
+  - `source: "uploaded"`
+  - `assetName`
+  - `assetWidth`
+  - `assetHeight`
+- the renderer still accepts legacy `source: "upload"` nodes for backwards compatibility, but newly created uploaded asset nodes persist `source: "uploaded"`
+- renderer sizing and caption logic uses uploaded-source metadata first so uploaded image nodes keep their real ratio and uploaded-source labeling without depending on fallback provider/model ids
 - model-node `full` is intentionally not persisted; it is derived from active selection at render time
 - renderer-only phantom previews are never written into `canvasDocument`
 

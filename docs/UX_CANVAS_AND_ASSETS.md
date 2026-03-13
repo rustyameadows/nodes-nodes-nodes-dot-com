@@ -3,6 +3,11 @@
 ## Workspace Views
 - `/`
   - app home with create-project actions, active project grid, and archived project section
+- `/nodes`
+  - app-level Node Library gallery sourced from the canonical node catalog
+  - specimen-first index with a compact title/search bar and real node shells centered on dark mini-canvas stages
+- `/nodes/$nodeId`
+  - node detail page with left-rail metadata and a neutral playground using the real node renderer
 - `/settings/app`
   - app-wide provider credentials and readiness
 - `/projects/$projectId/canvas`
@@ -13,12 +18,24 @@
   - project-only metadata and lifecycle actions
 
 ## Visual Direction
-- Preserve the existing dark palette and glass/text tokens.
+- Use a two-surface system:
+  - light app chrome for home, library, settings, queue, assets, and detail views
+  - dark overlay chrome for floating controls above the black canvas
+- Preserve the black canvas and the semantic node/connection color language.
+- Node cards now use a dedicated canvas-node system that shares foundations with the app design system without inheriting the light-shell look.
 - Preserve semantic canvas colors:
   - pink for text
   - blue for image assets
   - orange for video
+  - purple for operator nodes and operator-generated flow
   - citrus for generated output flow
+- model and operator/template shells stay neutral until they are wired into real output flow
+- node borders advertise semantics with explicit left/right roles:
+  - left edge: provenance or connected input meaning
+  - right edge: node/output meaning
+- border precedence is fixed:
+  - generated child provenance beats incidental input color on the left edge
+  - failed state overrides only the right edge to red
 - Functional parity matters more than exact shell/layout parity.
 
 ## Canvas
@@ -33,6 +50,11 @@
   - native asset import
   - generated asset pointer
   - uploaded asset pointer
+- the insert picker is registry-driven:
+  - visible node rows come from the canonical node catalog
+  - `Add Model Node` is the parent model row
+  - provider/model variants are derived from the live provider catalog
+  - add rows stay context-aware for `canvas`, `model-input`, and `template-input`
 - macOS native `Canvas` menu mirrors the primary node insert actions:
   - add node popup
   - add model node
@@ -44,47 +66,139 @@
   - undo canvas change
   - redo canvas change
 - native canvas insertions land at the current viewport center with a small stagger and use the same save/selection path as the insert popup
+- insert-picker node creation centers the new node shell on the requested canvas point instead of dropping its top-left corner there
+- focusing or selecting a node promotes it to the front of the canvas stack and that frontmost order persists after the node is deselected or the canvas reloads
+- canonical border recipes:
+  - fresh operator/template node: left edge stays input-driven, right edge stays neutral
+  - active operator/template node with downstream output: left edge stays input-driven, right edge turns purple
+  - operator-produced note: purple left, pink right
+  - model-produced note or list: citrus left, pink right
+  - model-produced image: citrus left, blue right
+  - model-produced operator/template: citrus left, purple right
+  - failed model or generated node: keep the normal left edge, force the right edge red
+  - queued or running generated outputs get a subtle shimmer until they succeed or fail
+- the same provider/model catalog also powers the shared searchable model picker used in:
+  - full model nodes
+  - node-library model detail/playground
+- Node Library detail surfaces mirror the real canvas renderer with demo-safe fixtures:
+  - playgrounds load with no selected node and no rails showing by default
+  - the model detail route is the exception: its standalone model fixture opens in the full shell on first load while remaining unfocused
+  - the left rail shows wrapped `Input` and `Output` contract cards instead of clipped badge pills
+  - display-mode switching moved out of the left rail and into a bottom-centered canvas overlay row with `Compact`, `Preview`, `Edit`, and `Resize`
+  - the bottom row drives the fixture's primary node without auto-selecting it, and keeps that primary node centered through shell transitions
+  - library mode changes animate the primary node shell position/size plus the viewport reframing as one motion; reduced-motion users keep the snap behavior
+  - library load, bottom-row mode changes, and node-side edit/display-mode actions all use the shared canvas centering engine, which fit-zooms from the actual surface size, the primary node's outer shell bounds, and the visible bottom dock inset
+  - size-changing library actions re-anchor from the live available viewport center on every click instead of preserving the node's previous world-space center, so repeated `Compact` / `Preview` / `Edit` / `Resize` toggles do not accumulate drift
+  - content-fit shells such as model `Edit` preflight-measure their target outer height in a hidden surface-level measurement layer before the visible transition starts, so shell growth and camera framing move together instead of snapping and then correcting
+  - those transitions begin from predicted shell bounds and then correct once the measured outer shell settles, so repeated `Preview` / `Edit` / `Resize` switches do not drift into clipped framing
+  - model detail uses a standalone model fixture rather than a fake upstream prompt note
+  - uploaded and generated image asset demos use a local placeholder preview when no real asset file exists
+  - generated asset demos keep their visible source-model connection line
+- Node Library index cards are specimen-first:
+  - the index removes hero copy, metrics, I/O pills, and display-mode pills
+  - each card centers the fixture's `primaryNodeId` in a static dark stage using the real node renderer path
+  - specimens are unfocused, non-interactive, rail-free, and port-free
+  - card footers keep only the node label, a short description, and a minimal model-only variant stat
+  - the gallery uses a controlled 3 / 2 / 1 column grid instead of auto-fit drift
+- provider-model variants stay visible even when blocked for the current credentials or provider project
+- variant statuses render as:
+  - `Ready`
+  - `Missing key`
+  - `Unverified`
+  - `Requires paid tier` / `Unavailable`
+  - `Temporarily limited`
+  - `Coming soon`
+- blocked variants are disabled in the picker, but existing nodes that already reference those models stay on the canvas and surface the blocked reason at run time
 - node presentation states:
   - `preview` is the default persisted state
   - `compact` is a persisted pill/tiny-node state
-  - `full` is transient and applies only to the active single-selected node
-  - `resized` is a persisted custom size for text notes, lists, templates, and asset nodes
+  - `full` is a persisted expanded model-editor state and remains transient only for template edit mode
+  - `resized` is a persisted custom size for text notes, lists, templates, model nodes, and asset nodes
+  - `resized` means the stored width and height are authoritative across focus changes; overflow stays inside the node instead of collapsing the shell back to content height
+  - resized model nodes also keep their expanded chrome and editor layout after focus moves away; the inactive surface becomes read-only until the node is selected again
 - mode changes animate quickly on shell size/content transitions, but those transitions shut off while dragging, resizing, or panning
 - inline full-mode entry points:
-  - `Enter` opens the selected node's inline full editor
-  - node double-click opens the same inline full editor for the clicked node
-- primary editor mapping:
-  - model -> `Prompt`
-  - text note -> `Note`
-  - list -> `List`
-  - text template -> `Template`
-  - uploaded asset source -> `Details`
-  - generated asset / generated model-spawned nodes -> `Source`
-- full/resized nodes use a header/chrome drag handle so text areas, table cells, and inline controls stay editable without dragging the node
-- asset/image nodes are the exception to chrome-only drag: dragging directly on the media surface still moves the node, while quick-action controls stop propagation
-- model preview stays close to the original small model card
-- model full mode follows the issue `#44` direction: one wide horizontal shell with inputs on the left, prompt/editor in the middle, model settings next, and output/run controls aligned toward the output edge
-- list full/resized mode is an inline sheet:
-  - editable header row
-  - editable cell grid
-  - row number rail
-  - add row / add column actions in node chrome
-  - remove-row action column
-  - remove-column controls in the header
-- template full mode includes:
-  - textarea editing
-  - detected placeholder chips
-  - connected-list column chips that insert `[[Column Name]]`
-  - inline compatibility warnings
-  - live merge preview rows
-- template full mode uses a two-zone layout with the editor on the left and compatibility/merge preview in a contained side rail
+  - newly inserted model nodes land with the full response-settings shell already open
+  - `Enter` activates the selected node's primary mode
+  - double-click zooms the viewport to fit the target node
+  - if double-click also changes the node's presentation mode, the viewport refit starts from predicted expanded bounds and then corrects against the measured outer shell after the transition settles
+  - image node double-click keeps the node in place and only reframes the viewport
+  - model node double-click switches the node into persisted `full` and opens the full response-settings editor while keeping the shared rails/run launcher behavior on single select
+  - template node double-click enters edit mode and then reframes to the expanded editor
+  - resized nodes keep their custom size when re-opened
+  - a shared bottom-center selection rail pins to the viewport:
+    - single selection shows `Center` plus `Capture PNG`
+    - multi-selection shows `Center Selection`, `Clean Up Selection`, and `Capture PNG`
+    - centering uses the same bounds-based fit/zoom engine as double-click and the Node Library
+  - `Clean Up Selection` only reflows the selected nodes, preserves node sizes, keeps the result anchored near the current selection footprint, and commits as one undoable canvas change
+  - `Capture PNG` exports only the selected nodes plus connections whose endpoints are both selected, renders that export against a temporary left-to-right layout instead of the live canvas coordinates, and saves through the native file dialog
+  - model and template double-click focus requests pre-compute target viewport bounds from predicted or preflight-measured outer shells before the visible transition begins, then validate against measured DOM bounds inside the same motion window
+  - top-rail `Default` and `Compact` mode pills use that same predictive fit/zoom flow, so the shell-size change and viewport reframe happen as one centered transition instead of a resize-first snap
+  - size-changing single-node transitions in both the workspace and the Node Library now place the target shell around the live available viewport center before fitting, rather than reusing the node's last stored world-space center
+- active-node behavior by kind:
+  - image asset: the media surface stays visually pure; preview shows only the image, and active labels return to the shared top title rail while actions stay outside the frame
+  - model: single-select keeps the node at its persisted `preview` or `compact` size, reveals the shared top/bottom rails, and keeps the external side run launcher visible; `Enter` or double-click switches the node into persisted `full`, the top-left rail immediately rehydrates to show `Default` and `Compact`, and that full shell stays open until `Default`, `Compact`, or resize mode takes over
+  - model: persisted `full` is node-local, so multiple model nodes may remain open at once and opening another model does not collapse older full model shells
+  - model: when a full or persisted `resized` shell loses focus, the large body stays open but the shared top/bottom rails and drag pill hide until the node is focused again
+  - model: selected `preview`, `full`, and persisted `resized` shells expose the bottom-right resize handle; `compact` does not
+  - text note: single-select reveals rails but keeps the sticky-note body visually unchanged
+  - list: single-select keeps the spreadsheet look and reveals edit affordances in place
+  - template: single-select stays in preview; `Edit` or double-click enters the larger editor
+- active nodes use external chrome slots instead of in-card overlays:
+  - centered floating title rails for all expanded nodes
+  - the top-left rail is reserved for display-mode pills like `Compact` and `Default`
+  - the centered title rail always includes a shared mono chip under the editable node title:
+    - model uses the current model label in citrus
+    - text note and list use their node-type label in the text accent
+    - template uses the operator accent
+    - uploaded and generated asset nodes use source-specific labels with output-semantic chip colors
+  - the top-right rail is reserved for `Drag me` plus non-interactive status pills
+  - bottom action rails hold all remaining interactive node controls so body layouts stay stable
+- uploaded image asset nodes behave as first-class uploaded sources:
+  - active title rails use uploaded-source labeling like `Uploaded Asset`, not fallback provider/model labels
+  - default sizing and locked-aspect resizing use persisted upload width/height metadata when available
+- active node drag uses rail/hotspot affordances instead of visible drag indicators
+- model full and resized modes use a simplified two-panel layout:
+  - left prompt surface, right model-settings surface at larger widths
+  - persisted `full` mode lets the outer shell hug the rendered panel content height instead of holding an extra fixed-height canvas body
+  - persisted `full` mode survives deselection, opening another model node, and reload because the state is saved on the node instead of in a single global editor slot
+  - resizing from `preview` or `full` immediately commits persisted `displayMode: "resized"` plus stored `size` at drag start, so the shell stops fitting to content before the resize drag settles
+  - persisted `resized` mode honors the stored width and height and scrolls internally when the prompt/settings content is taller than the node
+  - persisted `resized` mode keeps the same expanded layout when inactive instead of swapping back to the preview card
+  - persisted `resized` mode is sticky across focus changes and reloads until the user explicitly clicks `Default` or `Compact`
+  - prompt sources connected from text notes swap the prompt editor for a same-size readonly preview of the upstream note text
+  - provider settings flow in two columns when space allows and collapse as the node width tightens
+  - compact/default mode changes move into the top-left utility-pill rail, while the footer rail is reserved for node actions like duplicate
+- list mode is a spreadsheet surface across preview, active, and resized states:
+  - editable header row with no separate A/B/C letter strip
+  - editable cell grid with tight spreadsheet density
+  - fixed narrow row number rail
+  - draft entry row at the end while active
+  - add-column action in the shared bottom rail
+  - resizable column dividers
+  - row/column remove controls as overlay affordances that do not consume layout space
+  - resized lists may shrink down to the compact list footprint and rely on the existing internal sheet scroller when the table is larger than the node
+- template mode includes:
+  - text-note-like preview styling when not editing
+  - inline variable pills inside preview copy as the primary differentiator, rendered with clean labels instead of bracketed syntax
+  - no bottom variable shelf in preview mode
+  - a larger edit mode with clean-label variable insert buttons that still insert canonical `[[variable]]` syntax
+  - missing-variable compatibility states render the unresolved variables as pills instead of comma-separated text
 - active-node phantom previews:
   - appear only when exactly one source node is active
   - show likely downstream outputs without persisting real nodes
   - use dotted/low-opacity output connections
   - pin the run launcher near the source output edge
-- active template nodes suppress external phantom row cards while they are in `full` mode and rely on the inline merge preview instead
-- multi-selection compare/download actions live in a floating selection strip near the current selection instead of the old bottom bar
+- active template nodes suppress external phantom row cards while they are in edit mode
+- multi-selection compare/download actions live in the same bottom-center selection rail as `Center Selection`, `Clean Up Selection`, and `Capture PNG`, not in a floating strip near the selected nodes
+- the selection rail, copilot pill/panel, insert picker, asset picker, and bottom-bar popovers may be restyled as overlay chrome without changing node or connection rendering
+- the canvas also includes a bottom-right copilot surface:
+  - collapsed as a small fixed `NODE BOT` pill
+  - expands into a session-only chat panel that grows upward/left from the pill
+  - uses only runnable text-capable provider models
+  - keeps the composer focusable even when the selected model is blocked, and surfaces the runnable/blocked state inline near the composer footer and `Send` control instead of a dedicated status module under the model picker
+  - supports one active copilot turn at a time
+  - clears transcript history when the project canvas session reloads
 - canvas keyboard shortcuts when focus is not inside an input, textarea, select, or contenteditable surface:
   - `A` opens the add-to-canvas insert menu at viewport center
   - `C` connects exactly two selected nodes from oldest selected -> newest selected
@@ -98,34 +212,67 @@
   - excluded: viewport pan/zoom, queue state changes, polling-driven generated output hydration, and async placeholder reconciliation
 
 ## Queue Feedback
+- the queue list is a dense run ledger, not a secondary inspector pane
+- clicking a queue row opens the dedicated full execution record for that job
 - running jobs show queue state in the queue view and on generated output nodes
 - OpenAI image jobs can show persisted preview frames before final completion
-- successful image jobs hydrate output nodes with final assets
-- successful GPT text jobs hydrate generated nodes by output target:
+- Gemini image jobs do not stream preview frames in v1
+- Gemini model nodes surface model-aware settings in the same canvas and Node Library editors used by other runnable providers:
+  - shared text controls: `Output Target`, `Max Output Tokens`, `Temperature`, `Top P`, `Top K`
+  - Gemini 3 flash-family models add `Thinking Level`
+  - Gemini 2.5-family models add `Thinking Budget`
+  - Gemini image models add `Temperature`, `Aspect Ratio`, `Output Length`, `Top P`, and `Stop Sequences`
+  - `Nano Banana Pro` also adds `Resolution`
+  - `Nano Banana 2` also adds `Output Format`, `Resolution`, and `Thinking Level`
+- successful image jobs spawn final output nodes once from the completed job output
+- `Nano Banana 2` `Images Only` spawns one generated image output node per returned Gemini image part
+- `Nano Banana 2` `Images & Text` is experimental and provider-authentic:
+  - when Gemini returns both modalities, the run spawns one generated image output node per returned Gemini image part plus `Smart Output` text/list/template nodes from the same run
+  - when Gemini returns image-only, the run stays image-only and the queue inspector surfaces a best-effort diagnostic instead of showing a silent text-parse miss
+- successful OpenAI and Gemini text jobs hydrate generated nodes by output target:
   - `Text Note` -> generated text note
   - `List` -> generated list node
   - `Template` -> generated template node
-  - `Smart Output` -> one or more unconnected generated nodes
-- model-spawned list/template/note nodes keep source-job provenance but remain editable after hydration
-- template/list pairs show live inline merge preview before generation; those previews do not create real output nodes until run
+  - `Smart Output` -> one or more generated nodes plus any valid returned connections
+- generated smart-output nodes without an incoming generated connection keep a source-model link so mixed image/text runs remain easy to find on canvas
+- model-spawned list/template/note nodes keep source-job provenance but are otherwise normal editable child nodes after insertion
+- model-spawned placeholders and finished child nodes now originate from the model’s current visible right edge, matching the phantom preview even when the model is actively expanded
+- copilot text runs reuse the same `Smart Output` pipeline but insert their generated nodes near the current viewport center instead of relative to a visible model node
+- invalid smart-output connections are dropped with a warning instead of failing the whole job hydration
+- pending generated-output placeholders/previews may appear while a job is queued, running, or failed, but they are separate from the final spawned child nodes and are repaired in place if a completed image receipt exists but the placeholder still lacks its asset pointer
+- rerunning a model node appends a fresh set of generated child nodes instead of replacing older ones
+- deleting a generated child node keeps it deleted; completed outputs do not respawn automatically on later reloads or job polls
+- template/list pairs still compute live compatibility before generation, but the main visual emphasis for potential output rows stays in the phantom/generated preview layer rather than an oversized template side rail
 
 ## Asset Viewer
 - Grid view
 - 2-up compare
 - 4-up compare
 - Single asset detail view
+- Assets, queue, and settings now default to the compact/light app design-system density rather than bespoke view-local chrome
 
 Controls:
 - rating
 - flagged state
 - tags
 - sorting
-- filtering by type, provider, tag, flagged state, and rating
+- filtering by origin, type, provider, tag, flagged state, and rating
+- asset review always opens in an unfiltered state so all project assets are visible on entry, even if an older workspace snapshot stored restrictive filters
+- grid cards always show whether an asset is `Uploaded` or `Generated`
+- grid cards keep media ratio-safe with `object-fit: contain`, a stronger selected state, and a compact hover/focus utility rail for rating, flagging, and tags
+- 2-up and 4-up compare hide the filter rail and place ratio-safe assets on one shared gray review canvas with divider lines instead of padded individual cards
+- the dedicated single-asset viewer uses the same square-corner review canvas language and keeps metadata in a side pane without helper copy
+- asset-view keyboard shortcuts do not fire while focus is inside tag fields or other editable controls
 
 ## Desktop-Specific UX Changes
 - app startup lands on the app home view instead of auto-resuming directly into a project route
 - app home is reachable from the in-canvas `Menu` pill, app settings, and the native macOS `Project` menu
+- Node Library is reachable from app home, the in-canvas `Menu` pill, and the native macOS app/project menus
+- App Settings shows per-provider readiness; the Gemini row includes per-project access summary plus a manual `Refresh Access` action
+- Node Library detail keeps the actual playground canvas black while the surrounding rails and wrappers follow the light app surface system
 - browser uploads are replaced by native file dialogs
+- native file dialog imports and mac menu bar imports both create uploaded asset-source nodes through the same shared insertion path
+- when the mac menu bar adds assets to the project that is already open on canvas, the live canvas refreshes in place immediately; the user should not need to leave and re-enter the canvas route
 - asset and preview rendering uses `app-asset://` URLs
 - renderer never sees raw local file paths
 - queue/state updates arrive through preload events and TanStack Query invalidation
