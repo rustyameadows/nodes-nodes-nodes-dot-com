@@ -11,8 +11,8 @@
   --accent-blue: #8fdcff;
   --accent-purple: #ccb6ff;
   --accent-red: #ff6d57;
-  --max-width: 1120px;
-  --page-padding: clamp(18px, 4vw, 36px);
+  --max-width: 1100px;
+  --page-padding: clamp(18px, 4vw, 40px);
   --section-gap: clamp(42px, 7vw, 74px);
   --card-gap: 16px;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
@@ -192,7 +192,7 @@ summary {
 }
 
 .page-hero {
-  padding: 42px 0 0;
+  padding: 36px 0 0;
 }
 
 .page-section {
@@ -212,18 +212,22 @@ summary {
 .four-column,
 .node-grid,
 .detail-grid,
-.button-row,
-.pill-list,
 .stats-grid,
 .step-grid {
   display: grid;
   gap: var(--card-gap);
+  align-items: start;
 }
 
 .hero-grid,
 .two-column,
 .detail-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hero-grid {
+  gap: clamp(20px, 3vw, 34px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
 }
 
 .three-column,
@@ -245,11 +249,28 @@ summary {
   gap: 12px;
 }
 
+.equal-height-grid {
+  align-items: stretch;
+}
+
+.equal-height-grid > * {
+  height: 100%;
+}
+
+.product-shape-grid + .product-surface-grid {
+  margin-top: var(--card-gap);
+}
+
 .hero-copy,
 .section-head,
 .stack {
   display: grid;
   gap: 12px;
+}
+
+.hero-copy {
+  align-content: start;
+  gap: 14px;
 }
 
 .section-head {
@@ -283,30 +304,45 @@ h3 {
   margin: 0;
   color: var(--text);
   font-weight: 700;
+  text-wrap: balance;
 }
 
 .page-title {
-  max-width: 10ch;
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  line-height: 0.94;
+  max-width: 11ch;
+  font-size: clamp(2.3rem, 5.8vw, 4.4rem);
+  line-height: 0.92;
 }
 
 .display-title {
-  max-width: 13ch;
-  font-size: clamp(2.1rem, 5vw, 3.5rem);
-  line-height: 0.98;
+  max-width: 12ch;
+  font-size: clamp(1.95rem, 4.2vw, 3.1rem);
+  line-height: 0.95;
+}
+
+.product-title {
+  max-width: 16ch;
+}
+
+.faq-title {
+  max-width: 11ch;
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(2.15rem, 4vw, 3.45rem);
+  font-weight: 700;
+  line-height: 0.94;
+  text-wrap: balance;
 }
 
 .section-title {
-  max-width: 16ch;
+  max-width: 14ch;
   font-size: clamp(1.6rem, 3vw, 2.3rem);
   line-height: 1.02;
 }
 
 .lede,
 .route-intro {
-  max-width: 40rem;
-  font-size: 1.08rem;
+  max-width: 35rem;
+  font-size: 1.03rem;
 }
 
 .hero-note,
@@ -350,7 +386,7 @@ h3 {
 .step-card,
 .library-hero-card,
 .surface-card {
-  height: 100%;
+  height: auto;
   border: 2px solid var(--rule);
   background: var(--panel-bg);
   padding: 18px;
@@ -363,6 +399,7 @@ h3 {
 }
 
 .screenshot-frame {
+  align-self: start;
   border: 2px solid var(--rule);
   background: var(--panel-bg);
   padding: 10px;
@@ -371,13 +408,17 @@ h3 {
 .screenshot-frame img {
   width: 100%;
   height: auto;
-  border: 2px solid var(--rule);
+}
+
+.page-hero .screenshot-frame,
+.page-hero .placeholder {
+  align-self: center;
 }
 
 .placeholder {
   display: grid;
   align-items: end;
-  min-height: 220px;
+  min-height: 190px;
   padding: 18px;
   border: 2px solid var(--rule);
   background: linear-gradient(180deg, var(--placeholder-accent) 0 18px, var(--panel-bg) 18px 100%);
@@ -413,7 +454,7 @@ h3 {
 }
 
 .placeholder.tall {
-  min-height: 320px;
+  min-height: clamp(220px, 24vw, 280px);
 }
 
 .pill-list {
@@ -454,6 +495,10 @@ h3 {
   gap: 12px;
 }
 
+.faq-actions {
+  margin-top: 12px;
+}
+
 .faq-item {
   background: var(--panel-bg);
 }
@@ -487,6 +532,12 @@ h3 {
   display: grid;
   gap: 14px;
   align-content: start;
+}
+
+.equal-height-grid > article {
+  display: grid;
+  align-content: start;
+  gap: 14px;
 }
 
 .detail-copy {
@@ -541,6 +592,17 @@ h3 {
   .display-title,
   .section-title {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 1120px) {
+  .page-hero .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero .screenshot-frame,
+  .page-hero .placeholder {
+    max-width: 720px;
   }
 }
 
